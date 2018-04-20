@@ -3,23 +3,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>22 лучших формы входа и регистрации | Vladmaxi.net</title>
-    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
-    <link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="WEB-INF/css/style.css" media="screen" type="text/css" />
+
+
 </head>
 <body>
 
 
-<div class="vladmaxi-top">
-    <a href="http://vladmaxi.net" target="_blank">Главная Vladmaxi.net</a>
-    <span class="right">
-        <a href="http://vladmaxi.net/web-developer/css/22-luchshix-formy-vxoda-i-registracii-na-sajte-v-html-css.html">
-                <strong>Вернуться назад к статье</strong>
-            </a>
-        </span>
-    <div class="clr"></div>
-</div>
+
 
 <div id="login">
     <form action="javascript:void(0);" method="get">
