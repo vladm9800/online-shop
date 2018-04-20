@@ -38,5 +38,11 @@ public class AuthorizationController {
             return modelAndView;}
         }
     }
+    @GetMapping(value = "/authorization")
+    public ModelAndView auth(){
+       ModelAndView modelAndView = new ModelAndView();
+       modelAndView.setViewName("authorization");
+       return modelAndView;
+    }
 
 }

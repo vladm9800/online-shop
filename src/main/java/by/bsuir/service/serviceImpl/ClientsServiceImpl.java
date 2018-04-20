@@ -32,7 +32,7 @@ public class ClientsServiceImpl implements ClientsService{
      clients1.setEmailCl(clients.getEmailCl());
      clients1.setAddressCl(clients.getAddressCl());
      clients1.setDateOfBrth(clients.getDateOfBrth());
-     clients1.setSex(clients1.getSex());
+
 
 
     }
