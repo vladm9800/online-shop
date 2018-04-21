@@ -2,27 +2,29 @@ package by.bsuir.controller;
 
 import by.bsuir.model.Clients;
 import by.bsuir.service.ClientsService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.xml.ws.Response;
-
 @Controller
+
 public class AuthorizationController {
 
     ClientsService clientsService;
 
-//    @GetMapping(value = "/index")
-//    String getPage(){
-//        return "index";
-//    }
-//    @GetMapping(value = "/registration")
-//    String getRegistration(){
-//        return "registration";
-//    }
+    @GetMapping(value = "/index")
+    String getPage(){
+        return "index";
+    }
+    @GetMapping(value = "/index")
+    String getRegistration(){
+        return "index";
+    }
     @PostMapping(value = "/authorization")
    public ModelAndView authorization(@ModelAttribute String login,@ModelAttribute String password){
         ModelAndView modelAndView = new ModelAndView();
@@ -38,11 +40,18 @@ public class AuthorizationController {
             return modelAndView;}
         }
     }
-    @GetMapping(value = "/authorization")
+    @GetMapping(value = "/authorcization")
     public ModelAndView auth(){
-       ModelAndView modelAndView = new ModelAndView();
-       modelAndView.setViewName("authorization");
+       ModelAndView modelAndView = new ModelAndView("authorization");
+
        return modelAndView;
+    }
+    @GetMapping(value = "/index")
+    public void ind(Model model){
+
+           model.addAttribute("clients",clientsService.getAll());
+
+
     }
 
 }

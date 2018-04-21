@@ -3,11 +3,12 @@ package by.bsuir.service.serviceImpl;
 import by.bsuir.dao.ClientsDao;
 import by.bsuir.model.Clients;
 import by.bsuir.service.ClientsService;
-import org.apache.tomcat.util.security.MD5Encoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
 
 @Service
@@ -34,7 +35,12 @@ public class ClientsServiceImpl implements ClientsService{
      clients1.setDateOfBrth(clients.getDateOfBrth());
 
 
+    }
 
+    @Override
+    public List<Clients> getAll() {
+
+        return null;
     }
 
     @Override
