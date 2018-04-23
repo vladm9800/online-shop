@@ -163,45 +163,45 @@ public class Order {
         return result;
     }
 
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
-    public Delivery getDeliveryById() {
-        return deliveryById;
-    }
-
-    public void setDeliveryById(Delivery deliveryById) {
-        this.deliveryById = deliveryById;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
-    public Clients getClientsByIdClient() {
-        return clientsByIdClient;
-    }
-
-    public void setClientsByIdClient(Clients clientsByIdClient) {
-        this.clientsByIdClient = clientsByIdClient;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false)
-    public Employees getEmployeesByIdEmployee() {
-        return employeesByIdEmployee;
-    }
-
-    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
-        this.employeesByIdEmployee = employeesByIdEmployee;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_delivery_place", referencedColumnName = "id", nullable = false)
-    public DeliveryPlace getDeliveryPlaceByIdDeliveryPlace() {
-        return deliveryPlaceByIdDeliveryPlace;
-    }
-
-    public void setDeliveryPlaceByIdDeliveryPlace(DeliveryPlace deliveryPlaceByIdDeliveryPlace) {
-        this.deliveryPlaceByIdDeliveryPlace = deliveryPlaceByIdDeliveryPlace;
-    }
+//    @OneToOne
+//    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
+//    public Delivery getDeliveryById() {
+//        return deliveryById;
+//    }
+//
+//    public void setDeliveryById(Delivery deliveryById) {
+//        this.deliveryById = deliveryById;
+//    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+//    public Clients getClientsByIdClient() {
+//        return clientsByIdClient;
+//    }
+//
+//    public void setClientsByIdClient(Clients clientsByIdClient) {
+//        this.clientsByIdClient = clientsByIdClient;
+//    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false)
+//    public Employees getEmployeesByIdEmployee() {
+//        return employeesByIdEmployee;
+//    }
+//
+//    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
+//        this.employeesByIdEmployee = employeesByIdEmployee;
+//    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "id_delivery_place", referencedColumnName = "id", nullable = false)
+//    public DeliveryPlace getDeliveryPlaceByIdDeliveryPlace() {
+//        return deliveryPlaceByIdDeliveryPlace;
+//    }
+//
+//    public void setDeliveryPlaceByIdDeliveryPlace(DeliveryPlace deliveryPlaceByIdDeliveryPlace) {
+//        this.deliveryPlaceByIdDeliveryPlace = deliveryPlaceByIdDeliveryPlace;
+//    }
 
 //    @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "order_goods",joinColumns = @JoinColumn(name ="id_order" ),inverseJoinColumns = @JoinColumn(name = "id_goods")))
@@ -209,7 +209,7 @@ public class Order {
 //        return goodsById;
 //    }
 
-    public void setGoodsById(List<Goods> goodsById) {
-        this.goodsById = goodsById;
-    }
+//    public void setGoodsById(List<Goods> goodsById) {
+//        this.goodsById = goodsById;
+//    }
 }

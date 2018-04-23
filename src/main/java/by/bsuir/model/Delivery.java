@@ -163,22 +163,22 @@ public class Delivery {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false)
-    public Employees getEmployeesByIdEmployee() {
-        return employeesByIdEmployee;
-    }
-
-    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
-        this.employeesByIdEmployee = employeesByIdEmployee;
-    }
-
-    @OneToOne(mappedBy = "deliveryById")
-    public Order getOrderById() {
-        return orderById;
-    }
-
-    public void setOrderById(Order orderById) {
-        this.orderById = orderById;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false)
+//    public Employees getEmployeesByIdEmployee() {
+//        return employeesByIdEmployee;
+//    }
+//
+//    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
+//        this.employeesByIdEmployee = employeesByIdEmployee;
+//    }
+//
+//    @OneToOne(mappedBy = "deliveryById")
+//    public Order getOrderById() {
+//        return orderById;
+//    }
+//
+//    public void setOrderById(Order orderById) {
+//        this.orderById = orderById;
+//    }
 }

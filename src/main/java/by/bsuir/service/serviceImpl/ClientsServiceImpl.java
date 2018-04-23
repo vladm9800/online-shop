@@ -56,7 +56,7 @@ public class ClientsServiceImpl implements ClientsService{
 
         clientsDao.delete(clients);
     }
-    @Autowired
+//    @Autowired
     public void setClientsDao(ClientsDao clientsDao) {
         this.clientsDao = clientsDao;
     }

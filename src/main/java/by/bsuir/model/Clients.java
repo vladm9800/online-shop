@@ -166,21 +166,21 @@ public class Clients {
                 '}';
     }
 
-    @OneToMany(mappedBy = "clientsByIdClient")
-    public Collection<CreditCard> getCreditCardsById() {
-        return creditCardsById;
-    }
-
-    public void setCreditCardsById(Collection<CreditCard> creditCardsById) {
-        this.creditCardsById = creditCardsById;
-    }
-
-    @OneToMany(mappedBy = "clientsByIdClient")
-    public Collection<Order> getOrdersById() {
-        return ordersById;
-    }
-
-    public void setOrdersById(Collection<Order> ordersById) {
-        this.ordersById = ordersById;
-    }
+//    @OneToMany(mappedBy = "clientsByIdClient")
+//    public Collection<CreditCard> getCreditCardsById() {
+//        return creditCardsById;
+//    }
+//
+//    public void setCreditCardsById(Collection<CreditCard> creditCardsById) {
+//        this.creditCardsById = creditCardsById;
+//    }
+//
+//    @OneToMany(mappedBy = "clientsByIdClient")
+//    public Collection<Order> getOrdersById() {
+//        return ordersById;
+//    }
+//
+//    public void setOrdersById(Collection<Order> ordersById) {
+//        this.ordersById = ordersById;
+//    }
 }

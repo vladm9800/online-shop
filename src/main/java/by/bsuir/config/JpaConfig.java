@@ -15,8 +15,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
+
+
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -28,7 +28,7 @@ import java.util.Properties;
 public class JpaConfig implements TransactionManagementConfigurer {
 
 
-    @Value("${spring.dataSource.driverClassName}")
+    @Value("${spring.datasource.driver-class-name}")
     private String driver;
     @Value("${spring.dataSource.url}")
     private String url;
@@ -41,14 +41,6 @@ public class JpaConfig implements TransactionManagementConfigurer {
     @Value("${spring.jpa.hibernate.ddl-auto}")
     private String hbm2ddlAuto;
 
-    @Bean
-    public InternalResourceViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("webapp/WEB-INF/pages/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
 
     @Bean
     public DataSource configureDataSource() {
@@ -66,7 +58,7 @@ public class JpaConfig implements TransactionManagementConfigurer {
     public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory() {//менеджер сущностей дляJPA
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(configureDataSource());
-        entityManagerFactoryBean.setPackagesToScan("by.bsuir");
+       entityManagerFactoryBean.setPackagesToScan("by.bsuir");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();

@@ -117,21 +117,21 @@ public class Employees {
         return result;
     }
 
-    @OneToMany(mappedBy = "employeesByIdEmployee")
-    public Collection<Delivery> getDeliveriesById() {
-        return deliveriesById;
-    }
-
-    public void setDeliveriesById(Collection<Delivery> deliveriesById) {
-        this.deliveriesById = deliveriesById;
-    }
-
-    @OneToMany(mappedBy = "employeesByIdEmployee")
-    public Collection<Order> getOrdersById() {
-        return ordersById;
-    }
-
-    public void setOrdersById(Collection<Order> ordersById) {
-        this.ordersById = ordersById;
-    }
+//    @OneToMany(mappedBy = "employeesByIdEmployee")
+//    public Collection<Delivery> getDeliveriesById() {
+//        return deliveriesById;
+//    }
+//
+//    public void setDeliveriesById(Collection<Delivery> deliveriesById) {
+//        this.deliveriesById = deliveriesById;
+//    }
+//
+//    @OneToMany(mappedBy = "employeesByIdEmployee")
+//    public Collection<Order> getOrdersById() {
+//        return ordersById;
+//    }
+//
+//    public void setOrdersById(Collection<Order> ordersById) {
+//        this.ordersById = ordersById;
+//    }
 }

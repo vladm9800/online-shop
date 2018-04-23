@@ -78,12 +78,12 @@ public class DeliveryPlace {
         return result;
     }
 
-    @OneToMany(mappedBy = "deliveryPlaceByIdDeliveryPlace")
-    public Collection<Order> getOrdersById() {
-        return ordersById;
-    }
-
-    public void setOrdersById(Collection<Order> ordersById) {
-        this.ordersById = ordersById;
-    }
+//    @OneToMany(mappedBy = "deliveryPlaceByIdDeliveryPlace")
+//    public Collection<Order> getOrdersById() {
+//        return ordersById;
+//    }
+//
+//    public void setOrdersById(Collection<Order> ordersById) {
+//        this.ordersById = ordersById;
+//    }
 }

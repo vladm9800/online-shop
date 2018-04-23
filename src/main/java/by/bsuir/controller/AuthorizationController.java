@@ -19,39 +19,39 @@ public class AuthorizationController {
 
     @GetMapping(value = "/index")
     String getPage(){
-        return "index";
+        return "login";
     }
-    @GetMapping(value = "/index")
-    String getRegistration(){
-        return "index";
-    }
-    @PostMapping(value = "/authorization")
-   public ModelAndView authorization(@ModelAttribute String login,@ModelAttribute String password){
-        ModelAndView modelAndView = new ModelAndView();
-        Clients clients = clientsService.getClientByLogin(login);
-        if(clients==null){
-          modelAndView.setViewName("authorization");
-          return modelAndView;
-        }else {
-            if(clients.getPassword().equals(password)){
-                modelAndView.setViewName("catalog");
-                return modelAndView;
-            }else {modelAndView.setViewName("authorization");
-            return modelAndView;}
-        }
-    }
-    @GetMapping(value = "/authorcization")
-    public ModelAndView auth(){
-       ModelAndView modelAndView = new ModelAndView("authorization");
-
-       return modelAndView;
-    }
-    @GetMapping(value = "/index")
-    public void ind(Model model){
-
-           model.addAttribute("clients",clientsService.getAll());
-
-
-    }
+//    @GetMapping(value = "/index")
+//    String getRegistration(){
+//        return "index";
+//    }
+//    @PostMapping(value = "/authorization")
+//   public ModelAndView authorization(@ModelAttribute String login,@ModelAttribute String password){
+//        ModelAndView modelAndView = new ModelAndView();
+//        Clients clients = clientsService.getClientByLogin(login);
+//        if(clients==null){
+//          modelAndView.setViewName("authorization");
+//          return modelAndView;
+//        }else {
+//            if(clients.getPassword().equals(password)){
+//                modelAndView.setViewName("catalog");
+//                return modelAndView;
+//            }else {modelAndView.setViewName("authorization");
+//            return modelAndView;}
+//        }
+//    }
+//    @GetMapping(value = "/authorcization")
+//    public ModelAndView auth(){
+//       ModelAndView modelAndView = new ModelAndView("authorization");
+//
+//       return modelAndView;
+//    }
+//    @GetMapping(value = "/index")
+//    public void ind(Model model){
+//
+//           model.addAttribute("clients",clientsService.getAll());
+//
+//
+//    }
 
 }

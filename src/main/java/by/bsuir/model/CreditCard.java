@@ -103,14 +103,14 @@ public class CreditCard {
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
         return result;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
-    public Clients getClientsByIdClient() {
-        return clientsByIdClient;
-    }
-
-    public void setClientsByIdClient(Clients clientsByIdClient) {
-        this.clientsByIdClient = clientsByIdClient;
-    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+//    public Clients getClientsByIdClient() {
+//        return clientsByIdClient;
+//    }
+//
+//    public void setClientsByIdClient(Clients clientsByIdClient) {
+//        this.clientsByIdClient = clientsByIdClient;
+//    }
 }
