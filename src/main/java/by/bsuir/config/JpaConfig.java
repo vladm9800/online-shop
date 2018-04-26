@@ -1,9 +1,10 @@
 package by.bsuir.config;
 
 
-import by.bsuir.onlineshop.OnlineShopApplication;
+
 import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +25,8 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("by.bsuir")
-@EnableJpaRepositories(basePackageClasses = OnlineShopApplication.class)
+@EntityScan("by.bsuir.model")
+@EnableJpaRepositories(basePackages = "by.bsuir.dao",entityManagerFactoryRef = "configureEntityManagerFactory",transactionManagerRef = "annotationDrivenTransactionManager")
 public class JpaConfig implements TransactionManagementConfigurer {
 
 
@@ -58,7 +60,7 @@ public class JpaConfig implements TransactionManagementConfigurer {
     public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory() {//менеджер сущностей дляJPA
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(configureDataSource());
-       entityManagerFactoryBean.setPackagesToScan("by.bsuir");
+        entityManagerFactoryBean.setPackagesToScan("by.bsuir");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();

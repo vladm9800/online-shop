@@ -17,10 +17,9 @@ public class Delivery {
     private String deliveryStatus;
     private String typeOfDelivery;
     private Employees employeesByIdEmployee;
-    private Order orderById;
+    private Orders ordersById;
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -163,22 +162,22 @@ public class Delivery {
         return result;
     }
 
-//    @ManyToOne
-//    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false)
-//    public Employees getEmployeesByIdEmployee() {
-//        return employeesByIdEmployee;
-//    }
-//
-//    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
-//        this.employeesByIdEmployee = employeesByIdEmployee;
-//    }
-//
-//    @OneToOne(mappedBy = "deliveryById")
-//    public Order getOrderById() {
-//        return orderById;
-//    }
-//
-//    public void setOrderById(Order orderById) {
-//        this.orderById = orderById;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
+    public Employees getEmployeesByIdEmployee() {
+        return employeesByIdEmployee;
+    }
+
+    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
+        this.employeesByIdEmployee = employeesByIdEmployee;
+    }
+
+    @OneToOne(mappedBy = "deliveryById")
+    public Orders getOrdersById() {
+        return ordersById;
+    }
+
+    public void setOrdersById(Orders ordersById) {
+        this.ordersById = ordersById;
+    }
 }

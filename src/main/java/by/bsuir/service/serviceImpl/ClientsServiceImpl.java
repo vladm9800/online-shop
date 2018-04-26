@@ -1,6 +1,7 @@
 package by.bsuir.service.serviceImpl;
 
 import by.bsuir.dao.ClientsDao;
+
 import by.bsuir.model.Clients;
 import by.bsuir.service.ClientsService;
 
@@ -11,9 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-@Service
+@Service("ClientsService")
 public class ClientsServiceImpl implements ClientsService{
+
+
     private ClientsDao clientsDao;
+
+    @Autowired
+    public void setClientsDao(ClientsDao clientsDao) {
+        this.clientsDao = clientsDao;
+    }
 
     @Override
     @Transactional
@@ -36,18 +44,20 @@ public class ClientsServiceImpl implements ClientsService{
 
 
     }
+//    @Override
+//    @Transactional
+//    public Clients getClientByLogin(String login) {
+//
+//        return clientsDao.findClientsByLogin(login);
+//
+//    }
 
-    @Override
-    public List<Clients> getAll() {
-
-        return null;
-    }
 
     @Override
     @Transactional
-    public Clients getClientByLogin(String login) {
+    public List<Clients> getAll() {
 
-        return clientsDao.findClientsByLogin(login);
+        return (List<Clients>)clientsDao.findAll();
     }
 
     @Override
@@ -55,9 +65,5 @@ public class ClientsServiceImpl implements ClientsService{
     public void deleteCliens(Clients clients) {
 
         clientsDao.delete(clients);
-    }
-//    @Autowired
-    public void setClientsDao(ClientsDao clientsDao) {
-        this.clientsDao = clientsDao;
     }
 }

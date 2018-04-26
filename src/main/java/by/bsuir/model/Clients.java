@@ -2,7 +2,7 @@ package by.bsuir.model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Clients {
@@ -16,11 +16,27 @@ public class Clients {
     private String addressCl;
     private Date dateOfBrth;
 
-    private Collection<CreditCard> creditCardsById;
-    private Collection<Order> ordersById;
+    private List<CreditCard> creditCardsById;
+    private List<Orders> ordersById;
+
+    public Clients() {
+    }
+
+    public Clients(Long id, String login, String password, String emailCl, String surnameCl, String nameCl, String patronymicCl, String addressCl, Date dateOfBrth, List<CreditCard> creditCardsById, List<Orders> ordersById) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.emailCl = emailCl;
+        this.surnameCl = surnameCl;
+        this.nameCl = nameCl;
+        this.patronymicCl = patronymicCl;
+        this.addressCl = addressCl;
+        this.dateOfBrth = dateOfBrth;
+        this.creditCardsById = creditCardsById;
+        this.ordersById = ordersById;
+    }
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -110,8 +126,6 @@ public class Clients {
         this.dateOfBrth = dateOfBrth;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -130,7 +144,6 @@ public class Clients {
         if (addressCl != null ? !addressCl.equals(clients.addressCl) : clients.addressCl != null) return false;
         if (dateOfBrth != null ? !dateOfBrth.equals(clients.dateOfBrth) : clients.dateOfBrth != null) return false;
 
-
         return true;
     }
 
@@ -145,42 +158,26 @@ public class Clients {
         result = 31 * result + (patronymicCl != null ? patronymicCl.hashCode() : 0);
         result = 31 * result + (addressCl != null ? addressCl.hashCode() : 0);
         result = 31 * result + (dateOfBrth != null ? dateOfBrth.hashCode() : 0);
-
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Clients{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", emailCl='" + emailCl + '\'' +
-                ", surnameCl='" + surnameCl + '\'' +
-                ", nameCl='" + nameCl + '\'' +
-                ", patronymicCl='" + patronymicCl + '\'' +
-                ", addressCl='" + addressCl + '\'' +
-                ", dateOfBrth=" + dateOfBrth +
-                ", creditCardsById=" + creditCardsById +
-                ", ordersById=" + ordersById +
-                '}';
+    @OneToMany(mappedBy = "clientsByIdClient")
+    public List<CreditCard> getCreditCardsById() {
+        return creditCardsById;
     }
 
-//    @OneToMany(mappedBy = "clientsByIdClient")
-//    public Collection<CreditCard> getCreditCardsById() {
-//        return creditCardsById;
-//    }
-//
-//    public void setCreditCardsById(Collection<CreditCard> creditCardsById) {
-//        this.creditCardsById = creditCardsById;
-//    }
-//
-//    @OneToMany(mappedBy = "clientsByIdClient")
-//    public Collection<Order> getOrdersById() {
-//        return ordersById;
-//    }
-//
-//    public void setOrdersById(Collection<Order> ordersById) {
-//        this.ordersById = ordersById;
-//    }
+    public void setCreditCardsById(List<CreditCard> creditCardsById) {
+        this.creditCardsById = creditCardsById;
+    }
+
+    @OneToMany(mappedBy = "clientsByIdClient")
+    public List<Orders> getOrdersById() {
+        return ordersById;
+    }
+
+    public void setOrdersById(List<Orders> ordersById) {
+        this.ordersById = ordersById;
+    }
+
+
 }

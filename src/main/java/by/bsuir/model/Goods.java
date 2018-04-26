@@ -1,7 +1,6 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -12,15 +11,13 @@ public class Goods {
     private Double lenght;
     private Double width;
     private Double height;
-
     private String description;
     private String nameGoods;
     private String goodsCategory;
     private Integer guarantee;
-    private List<Order> orderById;
+    private List<Orders> orders;
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -79,8 +76,6 @@ public class Goods {
     public void setHeight(Double height) {
         this.height = height;
     }
-
-
 
     @Basic
     @Column(name = "description")
@@ -152,7 +147,6 @@ public class Goods {
         result = 31 * result + (lenght != null ? lenght.hashCode() : 0);
         result = 31 * result + (width != null ? width.hashCode() : 0);
         result = 31 * result + (height != null ? height.hashCode() : 0);
-
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (nameGoods != null ? nameGoods.hashCode() : 0);
         result = 31 * result + (goodsCategory != null ? goodsCategory.hashCode() : 0);
@@ -160,9 +154,15 @@ public class Goods {
         return result;
     }
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "order_goods",joinColumns = @JoinColumn(name ="id_goods" ),inverseJoinColumns = @JoinColumn(name = "id_order")))
-//    public List<Order> getOrderById(){
-//        return goodsById;
-//    }
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "order_goods",
+            joinColumns = {@JoinColumn(name = "id_goods")},
+            inverseJoinColumns = {@JoinColumn(name = "id_order")})
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
 }

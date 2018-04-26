@@ -1,7 +1,8 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
+
 
 @Entity
 public class Employees {
@@ -12,11 +13,10 @@ public class Employees {
     private String email;
     private String post;
     private Integer phoneNumberEmpl;
-    private Collection<Delivery> deliveriesById;
-    private Collection<Order> ordersById;
+    private List<Delivery> deliveriesById;
+    private List<Orders> ordersById;
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -117,21 +117,21 @@ public class Employees {
         return result;
     }
 
-//    @OneToMany(mappedBy = "employeesByIdEmployee")
-//    public Collection<Delivery> getDeliveriesById() {
-//        return deliveriesById;
-//    }
-//
-//    public void setDeliveriesById(Collection<Delivery> deliveriesById) {
-//        this.deliveriesById = deliveriesById;
-//    }
-//
-//    @OneToMany(mappedBy = "employeesByIdEmployee")
-//    public Collection<Order> getOrdersById() {
-//        return ordersById;
-//    }
-//
-//    public void setOrdersById(Collection<Order> ordersById) {
-//        this.ordersById = ordersById;
-//    }
+    @OneToMany(mappedBy = "employeesByIdEmployee")
+    public List<Delivery> getDeliveriesById() {
+        return deliveriesById;
+    }
+
+    public void setDeliveriesById(List<Delivery> deliveriesById) {
+        this.deliveriesById = deliveriesById;
+    }
+
+    @OneToMany(mappedBy = "employeesByIdEmployee")
+    public List<Orders> getOrdersById() {
+        return ordersById;
+    }
+
+    public void setOrdersById(List<Orders> ordersById) {
+        this.ordersById = ordersById;
+    }
 }

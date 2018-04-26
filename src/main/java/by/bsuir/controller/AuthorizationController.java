@@ -3,6 +3,7 @@ package by.bsuir.controller;
 import by.bsuir.model.Clients;
 import by.bsuir.service.ClientsService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +13,27 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-
 public class AuthorizationController {
 
-    ClientsService clientsService;
+
+    private ClientsService clientsService;
+
+    @Autowired
+    public void setClientsService(ClientsService clientsService) {
+        this.clientsService = clientsService;
+    }
 
     @GetMapping(value = "/index")
-    String getPage(){
+    String getPage() {
         return "login";
     }
+
+    @RequestMapping(value = "/main")
+    public String mainPage(Model model) {
+        model.addAttribute("users", clientsService.getAll());
+        return "main";
+   }
+
 //    @GetMapping(value = "/index")
 //    String getRegistration(){
 //        return "index";
@@ -53,5 +66,9 @@ public class AuthorizationController {
 //
 //
 //    }
+
+
+
+
 
 }

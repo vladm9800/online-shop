@@ -1,7 +1,8 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
+
 
 @Entity
 @Table(name = "delivery_place", schema = "online_shop", catalog = "")
@@ -10,10 +11,9 @@ public class DeliveryPlace {
     private String address;
     private String workingHours;
     private Integer phoneNumberDeliv;
-    private Collection<Order> ordersById;
+    private List<Orders> ordersById;
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -78,12 +78,12 @@ public class DeliveryPlace {
         return result;
     }
 
-//    @OneToMany(mappedBy = "deliveryPlaceByIdDeliveryPlace")
-//    public Collection<Order> getOrdersById() {
-//        return ordersById;
-//    }
-//
-//    public void setOrdersById(Collection<Order> ordersById) {
-//        this.ordersById = ordersById;
-//    }
+    @OneToMany(mappedBy = "deliveryPlaceByIdDeliveryPlace")
+    public List<Orders> getOrdersById() {
+        return ordersById;
+    }
+
+    public void setOrdersById(List<Orders> ordersById) {
+        this.ordersById = ordersById;
+    }
 }
