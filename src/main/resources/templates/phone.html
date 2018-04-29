@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="${phone.nameOfModel}"/>  <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
+        <link rel="icon" href="icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <header>
+            <img class="logo_img" src="samsung_logo.png">
+            <img class="login_pic" src="login.ico">
+            <form action="" class="search">
+                <input type="text" placeholder="Поиск в каталоге">
+                <input type="submit" value="Искать">
+            </form>
+            <a href="login.html" target="_blank" class="login">Вход в систему</a>
+        </header>
+            <img class="phone2" th:src="${phone.pict}">
+            <!--<img class="phone" src="https://content2.onliner.by/catalog/device/header/939908762a8a37184b9ee967945b17ab.jpeg">-->
+            <p class="cl1" th:text="${phone.nameOfModel}"></p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
+            <p class="op1">Главные характеристики из БД</p>
+            <p class="price1" th:text="${phone.cost}"></p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД-->
+            <input type="submit" class="pay" value="Купить">
+            <table class="t1">
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Общая информация</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Дата выхода на рынок</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.dateOfEntry}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Основные</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Операционная система</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.os}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Размер экрана</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.screenSize}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Разрешение экрана</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.screenResolution}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Оперативная память</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.ram}"> ???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Флэш-память</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.flashMemory}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Количество точек матрицы</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.mp}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Количество SIM-карт</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.numOfSimCards}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Максимальное разрешение видео</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.maxVideoResolurion}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Процессор</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Процессор</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.cpu}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Тактовая частота процессора</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.clockSpeed}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Количество ядер</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.numOfCores}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Разрядность процессора</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.sizeOfProcessor}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Конструкция</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Конструкция корпуса</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.housingDesign}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Цвет корпуса</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.colorOfCase}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Цвет фронтальной панели</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.frontPanelColor}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Размеры и вес</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Длина</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.length}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Ширина</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.width}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Толщина</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.thickness}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Вес</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.weight}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Экран</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Технология экрана</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.screenTechnology}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Количество цветов экрана</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.numOfColorsOfScreen}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Соотношение сторон</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.aspectRatio}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Интерфейсы</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Bluetooth</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.bluetooth}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Аудиовыход</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.audioOutput}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Wi-Fi</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.wiFi}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Разъём подключения</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.connectionConnector}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t3" colspan="2">
+                        <a>Аккумулятор и время работы</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Тип аккумулятора</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.batteryType}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Ёмкость аккумулятора</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.batteryCapacity}">???</a>
+                    </th>
+                </tr>
+                <tr class="t2">
+                    <th class="t4">
+                        <a>Время разговора</a>
+                    </th>
+                    <th class="t4">
+                        <a th:text="${phone.talkTime}" >???</a>
+                    </th>
+                </tr>
+
+
+
+            </table>
+        <footer class="footer2">
+            <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
+            <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
+            <a href="https://vk.com/samsung" ><img src="vk.svg" class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img src="twitter.png" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="facebook.png" class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img src="instagram.png" class="instagram"></a>
+        </footer>
+    </body>
+</html>

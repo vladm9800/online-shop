@@ -1,38 +1,45 @@
 package by.bsuir.controller;
 
-import by.bsuir.model.Clients;
+import by.bsuir.model.Goods;
 import by.bsuir.service.ClientsService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import by.bsuir.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class AuthorizationController {
 
 
     private ClientsService clientsService;
+    private GoodsService goodsService;
 
-    @Autowired
-    public void setClientsService(ClientsService clientsService) {
-        this.clientsService = clientsService;
+    @GetMapping(value = "/")
+    public String getPage(Model model) {
+        List<Goods> phones = goodsService.getGoods();
+        model.addAttribute("phones", phones);
+        return "index";
+    }
+    @GetMapping(value = "/registration")
+    String getRegistration() {
+        return "registration";
     }
 
-    @GetMapping(value = "/index")
-    String getPage() {
+    @GetMapping(value = "/login")
+    String getLogin() {
         return "login";
     }
 
-    @RequestMapping(value = "/main")
-    public String mainPage(Model model) {
-        model.addAttribute("users", clientsService.getAll());
-        return "main";
-   }
+    @PostMapping(value = "/phone")
+    public String getLogin13(@ModelAttribute Goods phone, Model model) {
+        Goods goods = goodsService.getGoodsById(phone.getId());
+        model.addAttribute("phone",goods);
+        return "phone";
+    }
+
 
 //    @GetMapping(value = "/index")
 //    String getRegistration(){
@@ -68,7 +75,13 @@ public class AuthorizationController {
 //    }
 
 
+    @Autowired
+    public void setClientsService(ClientsService clientsService) {
+        this.clientsService = clientsService;
+    }
 
-
-
+    @Autowired
+    public void setGoodsService(GoodsService goodsService) {
+        this.goodsService = goodsService;
+    }
 }

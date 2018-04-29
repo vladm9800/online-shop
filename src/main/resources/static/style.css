@@ -1,0 +1,614 @@
+body {
+    /*background-color: #c7eeee;*/
+}
+
+header {
+    width: 100%;
+    height: 105px;
+    background-color: #bee4ed;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.logo_img {
+    /*position: absolute;*/
+    top: 15px;
+    /*left: 500px;*/
+    width: 400px;
+    height: 90px;
+}
+
+.login{
+    position:absolute;
+    font-size: 25px;
+    top: 45px;
+    right: 110px;
+    text-decoration: none;
+    color: black;
+}
+
+.login_pic {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    width: 40px;
+    height: 40px;
+}
+
+/*#rectangle {*/
+    /*position: absolute;*/
+    /*top: 100px;*/
+    /*width: 100%;*/
+    /*height: 70px;*/
+    /*background: #87CEEB;*/
+/*}*/
+
+.search {
+    position: absolute;
+    width: 250px;
+    height: 10px;
+    top: 50px;
+    left: 60px;
+}
+
+table {
+    position: absolute;
+    top: 120px;
+    align: center;
+    height: 100px;
+    width: 99%;
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    /*border: 1px;*/
+    /*border-color: black;*/
+}
+
+th {
+    /*background: Salmon;*/
+    text-align: center;
+}
+td {
+/*<!--background: red; !* Цвет фона ячеек *!-->*/
+    text-align: center;
+}
+th, td {
+    /*border: 2px solid black; !* Параметры рамки *!*/
+    padding: 1px; /* Поля вокруг текста */
+}
+
+.phone1 {
+    width: 100px;
+    height: 120px;
+}
+
+.footer1 {
+    position: relative;
+    top: 930px;
+    width: 100%;
+    height: 70px;
+    background-color: #bee4ed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-top: 3px solid #F5F5F5;*/
+    /*overflow: hidden;*/
+}
+
+.help {
+    position: relative;
+    top: 5px;
+    left: -100px;
+    /*font-family: Monotype Corsiva;*/
+    /*font-weight:bolder;*/
+    font-size: 20px;
+    color: black;
+    /*top: 1170px;*/
+}
+
+.cop {
+    /*font-family: Monotype Corsiva;*/
+    /*font-weight:bolder;*/
+    font-size: 20px;
+    color: black;
+    position: relative;
+    top: 5px;
+    right: -20px;
+    /*width: 5000px;*/
+    /*top: 1170px;*/
+}
+
+.vk {
+    position: relative;
+    top: 6px;
+    right: -60px;
+    width: 40px;
+    height: 40px;
+
+}
+
+.twitter {
+    position: relative;
+    top: 6px;
+    right: -90px;
+    width: 40px;
+    height: 40px;
+}
+
+.facebook {
+    position: relative;
+    top: 6px;
+    right: -120px;
+    width: 48px;
+    height: 48px;
+}
+
+.instagram {
+    position: relative;
+    top: 6px;
+    right: -150px;
+    width: 40px;
+    height: 40px;
+}
+
+.phone2 {
+    position: absolute;
+    left: 50px;
+    top: 140px;
+    width: 200px;
+    height: 240px;
+}
+
+.cl1 {
+    position: absolute;
+    left: 300px;
+    top: 120px;
+    font-size: 50px;
+}
+
+.op1 {
+    position: absolute;
+    left: 300px;
+    top: 250px;
+    font-size: 20px;
+}
+
+.price1 {
+    position: absolute;
+    top: 135px;
+    right: 300px;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+}
+
+.pay {
+    position: absolute;
+    top: 175px;
+    right: 170px;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    background-color: #bee4ed;
+}
+
+.pay:hover {
+    color: #3f9db8;
+}
+
+.t1 {
+    position: absolute;
+    top: 400px;
+    /*border: 2px solid black;*/
+}
+
+.t2 {
+    border: 2px solid #bee4ed;
+    height: 30px;
+}
+
+.t3 {
+    position: relative;
+    height: 30px;
+    width: 50%;
+    text-align: center;
+    /*left: -200px;*/
+    background-color: #bee4ed;
+}
+
+.t4 {
+    position: relative;
+    text-align: left;
+    left: 70px;
+    border: 2px solid #bee4ed;
+    width: 50%;
+    font-weight: normal;
+}
+
+.footer2 {
+    position: relative;
+    top: 1480px;
+    width: 100%;
+    height: 70px;
+    background-color: #bee4ed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-top: 3px solid #F5F5F5;*/
+    /*overflow: hidden;*/
+}
+
+.footer3 {
+    position: relative;
+    top: 470px;
+    width: 100%;
+    height: 70px;
+    background-color: #bee4ed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-top: 3px solid #F5F5F5;*/
+    /*overflow: hidden;*/
+}
+
+#wrapper {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 325px;
+    margin-left: -150px;
+    margin-top: -200px;
+}
+
+.login-form {
+    width: 300px;
+    /*margin: 30 auto;*/
+    position: relative;
+    /*z-index:5;*/
+    background: #bee4ed;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px;
+    /*-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);*/
+}
+
+.login-form .header {
+    padding: 20px 30px 30px 30px;
+}
+
+.login-form .header h1 {
+    /*font-family: 'Bree Serif', serif;*/
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 10px;
+    color: #000000;
+    /*text-shadow: 1px 1px 0 rgba(256,256,256,1.0);*/
+    /*margin-bottom: 10px;*/
+}
+
+.login-form .header span {
+    font-size: 15px;
+    color: #000000;
+}
+
+.login-form .content {
+    padding: 0 30px 25px 30px;
+}
+
+.login-form .content .input {
+    width: 188px;
+    padding: 15px 25px;
+    /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+    font-weight: 400;
+    font-size: 15px;
+    color: #787979;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+}
+
+.login-form .content .password, .login-form .content .pass-icon {
+    margin-top: 25px;
+}
+
+.login-form .content .input:hover {
+     background: #dfe9ec;
+     color: #000000;
+ }
+
+.login-form .content .input:focus {
+    background: #dfe9ec;
+    color: #000000;
+    /*box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);*/
+}
+
+.login-form .footer {
+    padding: 25px 30px 40px 30px;
+    overflow: auto;
+    background: #bee4ed;
+    border-top: 1px solid #fff;
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
+    /*-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);*/
+    /*-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);*/
+}
+
+.login-form .footer .button {
+    float:right;
+    padding: 10px 25px;
+    /*font-family: 'Bree Serif', serif;*/
+    font-weight: 300;
+    font-size: 20px;
+    color: black;
+    background: #56c2e1;
+    border: 1px solid #46b3d3;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form .footer .button:hover {
+    background: #3f9db8;
+    border: 1px solid rgba(256,256,256,0.75);
+    /*box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);*/
+    /*-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);*/
+    /*-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);*/
+}
+
+.login-form .footer .button:focus {
+    position: relative;
+    /*bottom: -1px;*/
+    background: #56c2e1;
+    /*box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);*/
+    /*-moz-box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);*/
+    /*-webkit-box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);*/
+}
+
+.login-form .footer .register {
+    /*display: block;*/
+    float: right;
+    padding: 10px 5px 10px 0;
+    margin-right: 20px;
+    /*background: none;*/
+    /*border: none;*/
+    cursor: pointer;
+    /*font-family: 'Bree Serif', serif;*/
+    font-weight: 300;
+    font-size: 20px;
+    color: black;
+    /*text-shadow: 0px 1px 0 rgba(256,256,256,0.5);*/
+    /*text-decoration: none;*/
+}
+
+.login-form .footer .register:hover {
+    color: #3f9db8;
+}
+
+.login-form .footer .register:focus {
+    position: relative;
+    bottom: -1px;
+}
+
+.footer4 {
+    position: relative;
+    top: 850px;
+    width: 100%;
+    height: 70px;
+    background-color: #bee4ed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-top: 3px solid #F5F5F5;*/
+    /*overflow: hidden;*/
+}
+
+.dp {
+    position: relative;
+    top: -20px;
+    /*left: 20px;*/
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.reg1 {
+    position: relative;
+    /*top: 100px;*/
+    font-size: 20px;
+}
+
+.reg2 {
+    position: relative;
+    height: 25px;
+    width: 300px;
+}
+
+.r1 {
+    position: absolute;
+    top: 180px;
+    /*border: 2px solid black;*/
+}
+
+.r2 {
+    position: relative;
+    top: 100px;
+    /*height: 10px;*/
+    width: 50%;
+    text-align: center;
+    /*border: 2px solid black;*/
+}
+
+.r3 {
+    position: relative;
+    /*top: 100px;*/
+    /*height: 10px;*/
+    width: 50%;
+    text-align: right;
+    right: 70px;
+    /*border: 2px solid black;*/
+}
+
+.r4 {
+    position: relative;
+    /*top: 100px;*/
+    /*height: 10px;*/
+    width: 50%;
+    text-align: left;
+    left: 1px;
+    /*border: 2px solid black;*/
+}
+
+.reg_but {
+    position: absolute;
+    top: 975px;
+    left: 530px;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #bee4ed;
+}
+
+.reg_but:hover {
+    color: #3f9db8;
+}
+
+.footer5 {
+    position: relative;
+    top: 320px;
+    width: 100%;
+    height: 70px;
+    background-color: #bee4ed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-top: 3px solid #F5F5F5;*/
+    /*overflow: hidden;*/
+}
+
+.phone3 {
+    position: absolute;
+    left: 50px;
+    top: 155px;
+    width: 200px;
+    height: 240px;
+}
+
+.cl2 {
+    position: absolute;
+    left: 300px;
+    top: 160px;
+    font-size: 50px;
+}
+
+.op2 {
+    position: absolute;
+    left: 300px;
+    top: 290px;
+    font-size: 20px;
+}
+
+.st {
+    position: absolute;
+    top: 200px;
+    right: 240px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.price2 {
+    position: absolute;
+    top: 180px;
+    right: 130px;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+}
+
+.dos {
+    position: absolute;
+    top: 400px;
+    left: 110px;
+    /*text-align: center;*/
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.pol1 {
+    position: absolute;
+    top: 420px;
+    left: 105px;
+    /*text-align: center;*/
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.reg3 {
+    position: relative;
+    left: 100px;
+    width: 400px;
+    top: 290px;
+    font-size: 20px;
+}
+
+.reg4 {
+    position: relative;
+    left: 100px;
+    top: 290px;
+    height: 25px;
+    width: 500px;
+}
+
+.opl {
+    position: absolute;
+    top: 400px;
+    right: 520px;
+    /*text-align: center;*/
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.pol2 {
+    position: absolute;
+    top: 420px;
+    right: 105px;
+    /*text-align: center;*/
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.choice{
+    position: absolute;
+    font-weight: 500;
+    font-size: 20px;
+    top: 510px;
+    right: 390px;
+}
+
+.buy_but {
+    position: absolute;
+    top: 700px;
+    right: 270px;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #bee4ed;
+}
+
+.buy_but:hover {
+    color: #3f9db8;
+}

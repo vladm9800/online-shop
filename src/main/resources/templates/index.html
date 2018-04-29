@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Samsung online-shop</title>
+        <link rel="icon" href="Samsung-Logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <header>
+            <img class="logo_img" src="samsung_logo.png">
+            <img class="login_pic" src="login.ico">
+            <form action="" class="search">
+                <input type="text" placeholder="Поиск в каталоге">
+                <input type="submit" value="Искать">
+            </form>
+            <a href="/login" target="_blank" class="login">Вход в систему</a>
+        </header>
+
+        <div class="card-deck">
+            <div th:each="phone : ${phones}">
+
+            <div class="card" style="width: 200px; height: 250px;">
+                <img class="card-img-top" th:src="${phone.pict}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${phone.nameOfModel}"/>
+                    <p class="card-text" th:text="${phone.os}"/>
+                    <form action="#" th:action="phone" th:field="${phone}" method="post">
+                        <input type="hidden" th:value="${phone.id}" name="id" />
+                        <input type="submit" value="Go somewhere" class="btn btn-primary" />
+                    </form>
+                    <!--<a th:href="@{/phone(id=${phone.id})}" class="btn btn-primary">Go somewhere</a>-->
+                </div>
+            </div>
+
+            </div>
+        </div>
+        <!--<table>-->
+            <!--<tr>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s9.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/939908762a8a37184b9ee967945b17ab.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S9</h3>-->
+                    <!--&lt;!&ndash;ЗАМЕНИТЬ НА ЭТО:<a href="phone.html" target="_blank" >Samsung Galaxy S9</a>&ndash;&gt;-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s8.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/53545ff454cca6a523498906b849ff5d.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S8</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="j7.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/bf7f7f743482a8fd92904bec45904a95.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy J7</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="note8.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/b2a5146d7903050f5dd71cf7f22a121d.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy Note8</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s7edge.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/b5dfd0a36625fcdc882bc8ad9e756cf0.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S8 Edge</h3>-->
+                <!--</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="a5.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/ebdba495869ed2895817bcad9ca88d38.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy A5</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s7.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/f4af029543ff0196a401d1d49f3c1e3c.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S7</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="a8.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/a39b8570bb04a3e1b1352be8e4cde398.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy A8</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="j5.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/39a9f3d30bb039587d18dc3cc4aa9b01.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy J5</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="a3.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/f2756536cd08eee4ac9defa5b39cc564.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy A3</h3>-->
+                <!--</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="a7.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/0915a88b6868873a178b0781312f83c9.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy A7</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="note5.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/b0497c929c06a24f76d8d349f8166895.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy Note5</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="c5pro.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/5b2ad48248452c91307057100bbe1985.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy C5 Pro</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="j1.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/90841b76d400e2c56cd08937093168c7.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy J1</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s6.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/cba2554c12a7746ed229a80e8604a865.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S6</h3>-->
+                <!--</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s9+.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/c6430e857103c6846b987fa54f295843.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S9+</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="c9pro.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/f22302979613c9fd4a7bfa20c1ac1455.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy C9 Pro</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="j2.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/cc37f4e4156b357171edd35b5751529e.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy J2</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s5.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/434d97f746218d8e14eb11187eaf0f7e.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S5</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s8+.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/2320936be3124dbb2ac422376a732fd7.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S8+</h3>-->
+                <!--</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="s6edge.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/7289b4f15998b08d917e0c434bce7a0e.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy S6 Edge</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="a9pro.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/4db2eb4a3f6deca30dd9b7064e187c3e.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy A9 Pro</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="c7.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/b1c36e479b7aa65d6dd7dcd45765ad5b.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy C7</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="j3.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/ba9bd5df16508e1e9794ef20c25a131b.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy J3</h3>-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--<img class="phone1" src="note4.jpeg">-->
+                    <!--&lt;!&ndash;<img class="phone" src="https://content2.onliner.by/catalog/device/header/9077830ab3d60445334f5cce28e19645.jpeg">&ndash;&gt;-->
+                    <!--<h3>Samsung Galaxy Note4</h3>-->
+                <!--</th>-->
+            <!--</tr>-->
+            <!--</table>-->
+        <footer class="footer1">
+            <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
+            <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
+            <a href="https://vk.com/samsung" ><img src="vk.svg" class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img src="twitter.png" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="facebook.png" class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img src="instagram.png" class="instagram"></a>
+        </footer>
+    </body>
+</html>

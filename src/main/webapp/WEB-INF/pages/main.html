@@ -45,12 +45,19 @@
                 </div>
             </div>
 
-            <div th:each="clients : ${users}">
-                <h3 th:text="${clients.login}"/>
-                <p th:text="${clients.password}"/>
+            <!--<div th:each="clients : ${users}">-->
+                <!--<h3 th:text="${clients.login}"/>-->
+                <!--<p th:text="${clients.password}"/>-->
+                <table>
+                    <tr th:each="clients : ${users}">
+                    <td th:text="${clients.login}"/>
+                        <td th:text="${clients.password}"/>
+
+                    </tr>
+                </table>
                 <hr/>
             </div>
-        </div>
+        <!--</div>-->
     </div>
 </div>
 </body>
