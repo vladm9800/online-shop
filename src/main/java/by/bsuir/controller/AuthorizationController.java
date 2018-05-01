@@ -1,12 +1,17 @@
 package by.bsuir.controller;
 
+
+import by.bsuir.dto.CardAndDelivery;
+import by.bsuir.model.CreditCard;
+import by.bsuir.model.DeliveryPlace;
 import by.bsuir.model.Goods;
-import by.bsuir.service.ClientsService;
-import by.bsuir.service.GoodsService;
+import by.bsuir.model.Orders;
+import by.bsuir.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -16,6 +21,9 @@ public class AuthorizationController {
 
     private ClientsService clientsService;
     private GoodsService goodsService;
+    private CreditCardService cardService;
+    private DeliveryPlaceService placeService;
+    private OrdersService ordersService;
 
     @GetMapping(value = "/")
     public String getPage(Model model) {
@@ -34,18 +42,61 @@ public class AuthorizationController {
     }
 
     @PostMapping(value = "/phone")
-    public String getLogin13(@ModelAttribute Goods phone, Model model) {
+    public String getPhone(@ModelAttribute Goods phone, Model model) {
         Goods goods = goodsService.getGoodsById(phone.getId());
         model.addAttribute("phone",goods);
         return "phone";
     }
 
+    @PostMapping(value = "/pay")
+    public String getCard(@ModelAttribute Goods phone, Model model){
 
-//    @GetMapping(value = "/index")
-//    String getRegistration(){
-//        return "index";
+        Goods goods= goodsService.getGoodsById(phone.getId());
+        model.addAttribute("phone",goods);
+        model.addAttribute("pay",new CardAndDelivery());
+
+        return "pay";
+    }
+
+//    @PostMapping(value = "/card")
+//    public String getPp(@ModelAttribute Goods phone,@ModelAttribute DeliveryPlace pay, Model model){
+//        Goods goods= goodsService.getGoodsById(phone.getId());
+//        model.addAttribute("phone",goods);
+//        model.addAttribute("card",new CreditCard());
+//        DeliveryPlace deliveryPlace = new DeliveryPlace(pay.getCity(),pay.getAddress(),pay.getPhoneNumberDeliv());
+//
+//        placeService.save(deliveryPlace);
+//        return "card";
 //    }
-//    @PostMapping(value = "/authorization")
+
+    @PostMapping(value = "/accept")
+    public String getAccept(@ModelAttribute Goods phone,@ModelAttribute CardAndDelivery cAd,Model model ){
+        Goods goods = goodsService.getGoodsById(phone.getId());
+        DeliveryPlace place = new DeliveryPlace(cAd.getCity(),cAd.getAddress(),cAd.getPhoneNumberDeliv());
+        CreditCard cards = new CreditCard(cAd.getCreditСardNumber(),cAd.getCvv(),cAd.getExpiryDate());
+
+          placeService.save(place);
+          place.getId();
+          Orders orders = new Orders();
+
+//        ordersService.addOrder(orders);
+//        cardService.save(cards);
+
+        List<Goods> phones = goodsService.getGoods();
+        model.addAttribute("phones", phones);
+
+    return "index";
+    }
+
+
+//@GetMapping(value = "/pay")
+//    public String getPay(@ModelAttribute Goods phone, Model model){
+//    Goods goods= goodsService.getGoodsById(phone.getId());
+//        model.addAttribute("phone",goods);
+//        return "pay";
+//}
+
+    //    @PostMapping(value = "/authorization")
 //   public ModelAndView authorization(@ModelAttribute String login,@ModelAttribute String password){
 //        ModelAndView modelAndView = new ModelAndView();
 //        Clients clients = clientsService.getClientByLogin(login);
@@ -73,7 +124,20 @@ public class AuthorizationController {
 //
 //
 //    }
+    @Autowired
+    public void setOrdersService(OrdersService ordersService) {
+        this.ordersService = ordersService;
+    }
 
+
+    @Autowired
+    public void setCardService(CreditCardService cardService) {
+        this.cardService = cardService;
+    }
+    @Autowired
+    public void setPlaceService(DeliveryPlaceService placeService) {
+        this.placeService = placeService;
+    }
 
     @Autowired
     public void setClientsService(ClientsService clientsService) {

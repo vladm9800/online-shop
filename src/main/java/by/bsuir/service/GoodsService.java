@@ -7,4 +7,5 @@ import java.util.List;
 public interface GoodsService {
     Goods getGoodsById(Long id);
     List<Goods> getGoods();
+    void save(Goods goods);
 }

@@ -18,13 +18,14 @@ public class Orders {
     private Long idClient;
     private Long idEmployee;
     private Long idDeliveryPlace;
-    private Delivery deliveryById;
     private Clients clientsByIdClient;
     private Employees employeesByIdEmployee;
     private DeliveryPlace deliveryPlaceByIdDeliveryPlace;
     private List<Goods> goods;
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -159,16 +160,6 @@ public class Orders {
         result = 31 * result + (idEmployee != null ? idEmployee.hashCode() : 0);
         result = 31 * result + (idDeliveryPlace != null ? idDeliveryPlace.hashCode() : 0);
         return result;
-    }
-
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
-    public Delivery getDeliveryById() {
-        return deliveryById;
-    }
-
-    public void setDeliveryById(Delivery deliveryById) {
-        this.deliveryById = deliveryById;
     }
 
     @ManyToOne

@@ -22,7 +22,7 @@
         <div class="card-deck">
             <div th:each="phone : ${phones}">
 
-            <div class="card" style="width: 200px; height: 250px;">
+            <div class="card,shadow-lg p-3 mb-5 bg-white rounded" style="width: 200px; height: 250px;">
                 <img class="card-img-top" th:src="${phone.pict}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${phone.nameOfModel}"/>
@@ -37,6 +37,7 @@
 
             </div>
         </div>
+
         <!--<table>-->
             <!--<tr>-->
                 <!--<th>-->

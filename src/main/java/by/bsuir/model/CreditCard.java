@@ -8,13 +8,22 @@ import java.sql.Date;
 public class CreditCard {
     private Long id;
     private Integer creditСardNumber;
-    private String nameOwner;
     private Integer cvv;
-    private Date expiryDate;
+    private String expiryDate;
     private Long idClient;
     private Clients clientsByIdClient;
 
+    public CreditCard() {
+    }
+
+    public CreditCard(Integer creditСardNumber, Integer cvv, String expiryDate) {
+        this.creditСardNumber = creditСardNumber;
+        this.cvv = cvv;
+        this.expiryDate = expiryDate;
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -34,15 +43,7 @@ public class CreditCard {
         this.creditСardNumber = creditСardNumber;
     }
 
-    @Basic
-    @Column(name = "name_owner")
-    public String getNameOwner() {
-        return nameOwner;
-    }
 
-    public void setNameOwner(String nameOwner) {
-        this.nameOwner = nameOwner;
-    }
 
     @Basic
     @Column(name = "cvv")
@@ -56,11 +57,11 @@ public class CreditCard {
 
     @Basic
     @Column(name = "expiry_date")
-    public Date getExpiryDate() {
+    public String getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
     }
 
@@ -84,7 +85,7 @@ public class CreditCard {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (creditСardNumber != null ? !creditСardNumber.equals(that.creditСardNumber) : that.creditСardNumber != null)
             return false;
-        if (nameOwner != null ? !nameOwner.equals(that.nameOwner) : that.nameOwner != null) return false;
+
         if (cvv != null ? !cvv.equals(that.cvv) : that.cvv != null) return false;
         if (expiryDate != null ? !expiryDate.equals(that.expiryDate) : that.expiryDate != null) return false;
         if (idClient != null ? !idClient.equals(that.idClient) : that.idClient != null) return false;
@@ -96,7 +97,7 @@ public class CreditCard {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (creditСardNumber != null ? creditСardNumber.hashCode() : 0);
-        result = 31 * result + (nameOwner != null ? nameOwner.hashCode() : 0);
+
         result = 31 * result + (cvv != null ? cvv.hashCode() : 0);
         result = 31 * result + (expiryDate != null ? expiryDate.hashCode() : 0);
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);

@@ -21,7 +21,12 @@
             <p class="cl1" th:text="${phone.nameOfModel}"></p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
             <p class="op1">Главные характеристики из БД</p>
             <p class="price1" th:text="${phone.cost}"></p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД-->
-            <input type="submit" class="pay" value="Купить">
+
+        <form action="#" th:action="pay" th:field="${phone}" method="post">
+            <input type="hidden" th:value="${phone.id}" name="id" />
+            <input type="submit" value="Купить" class="pay" />
+        </form>
+
             <table class="t1">
                 <tr class="t2">
                     <th class="t3" colspan="2">
@@ -316,4 +321,4 @@
             <a href="https://www.instagram.com/samsungru/" ><img src="instagram.png" class="instagram"></a>
         </footer>
     </body>
-</html>
+</html >

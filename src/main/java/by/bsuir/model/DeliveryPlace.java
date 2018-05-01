@@ -8,12 +8,22 @@ import java.util.List;
 @Table(name = "delivery_place", schema = "online_shop", catalog = "")
 public class DeliveryPlace {
     private Long id;
+    private String city;
     private String address;
-    private String workingHours;
-    private Integer phoneNumberDeliv;
+    private String phoneNumberDeliv;
     private List<Orders> ordersById;
 
+    public DeliveryPlace() {
+    }
+
+    public DeliveryPlace(String city, String address, String phoneNumberDeliv) {
+        this.city = city;
+        this.address = address;
+        this.phoneNumberDeliv = phoneNumberDeliv;
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -24,6 +34,15 @@ public class DeliveryPlace {
     }
 
     @Basic
+    @Column(name = "city")
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    @Basic
     @Column(name = "address")
     public String getAddress() {
         return address;
@@ -33,23 +52,16 @@ public class DeliveryPlace {
         this.address = address;
     }
 
-    @Basic
-    @Column(name = "working_hours")
-    public String getWorkingHours() {
-        return workingHours;
-    }
 
-    public void setWorkingHours(String workingHours) {
-        this.workingHours = workingHours;
-    }
+
 
     @Basic
     @Column(name = "phone_number_deliv")
-    public Integer getPhoneNumberDeliv() {
+    public String getPhoneNumberDeliv() {
         return phoneNumberDeliv;
     }
 
-    public void setPhoneNumberDeliv(Integer phoneNumberDeliv) {
+    public void setPhoneNumberDeliv(String phoneNumberDeliv) {
         this.phoneNumberDeliv = phoneNumberDeliv;
     }
 
@@ -61,20 +73,20 @@ public class DeliveryPlace {
         DeliveryPlace that = (DeliveryPlace) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (city != null ? !city.equals(that.city) : that.city != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        if (workingHours != null ? !workingHours.equals(that.workingHours) : that.workingHours != null) return false;
         if (phoneNumberDeliv != null ? !phoneNumberDeliv.equals(that.phoneNumberDeliv) : that.phoneNumberDeliv != null)
             return false;
-
-        return true;
+        return ordersById != null ? ordersById.equals(that.ordersById) : that.ordersById == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (workingHours != null ? workingHours.hashCode() : 0);
         result = 31 * result + (phoneNumberDeliv != null ? phoneNumberDeliv.hashCode() : 0);
+        result = 31 * result + (ordersById != null ? ordersById.hashCode() : 0);
         return result;
     }
 

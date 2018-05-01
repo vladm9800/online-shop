@@ -17,9 +17,9 @@ public class Delivery {
     private String deliveryStatus;
     private String typeOfDelivery;
     private Employees employeesByIdEmployee;
-    private Orders ordersById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -172,12 +172,5 @@ public class Delivery {
         this.employeesByIdEmployee = employeesByIdEmployee;
     }
 
-    @OneToOne(mappedBy = "deliveryById")
-    public Orders getOrdersById() {
-        return ordersById;
-    }
 
-    public void setOrdersById(Orders ordersById) {
-        this.ordersById = ordersById;
-    }
 }

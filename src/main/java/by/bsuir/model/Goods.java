@@ -43,6 +43,7 @@ public class Goods {
     private List<Orders> orders;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;

@@ -184,10 +184,10 @@ th, td {
 
 .pay {
     position: absolute;
-    top: 175px;
+    top: 285px;
     right: 170px;
     height: 50px;
-    width: 100px;
+    width: 120px;
     font-size: 20px;
     background-color: #bee4ed;
 }
@@ -467,7 +467,7 @@ th, td {
 
 .reg_but {
     position: absolute;
-    top: 975px;
+    top: 800px;
     left: 530px;
     height: 50px;
     width: 300px;
@@ -477,6 +477,20 @@ th, td {
 }
 
 .reg_but:hover {
+    color: #3f9db8;
+}
+.reg_but1 {
+    position: absolute;
+    top: 400px;
+    left: 530px;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #bee4ed;
+}
+
+.reg_but1:hover {
     color: #3f9db8;
 }
 
@@ -594,8 +608,8 @@ th, td {
     position: absolute;
     font-weight: 500;
     font-size: 20px;
-    top: 510px;
-    right: 390px;
+    top: 80px;
+    right: 90px;
 }
 
 .buy_but {

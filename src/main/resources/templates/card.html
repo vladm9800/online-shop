@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Samsung online-shop</title> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <img class="logo_img" src="samsung_logo.png">
+    <a href="index.html"> <img class="login_pic" src="login.ico"> </a>
+</header>
+<table>
+
+<form action="#" th:action="@{/accept}" th:object="${card}" name="card" method="post">
+<tr class="r2">
+    <th class="r3">
+        <p class="reg1">Номер кредитной карты</p>
+    </th>
+    <th class="r4">
+        <input type="number"  th:field="*{creditСardNumber}"  name="creditСardNumber" class="reg2" />
+    </th>
+</tr>
+<tr class="r2">
+    <th class="r3">
+        <p class="reg1">Дата истечения срока</p>
+    </th>
+    <th class="r4">
+        <input type="number" th:field="*{cvv}" name="cvv" class="reg2" />
+
+    </th>
+</tr>
+<tr class="r2">
+    <th class="r3">
+        <p class="reg1">CVV</p>
+    </th>
+    <th class="r4">
+        <input type="text"  th:field="*{expiryDate}" name="expiryDate" class="reg2" />
+    </th>
+</tr>
+
+    <input type="hidden" th:field="${phone.id}" name="idPhone" />
+    <input type="submit" value="Оплатить" class="reg_but1" />
+</form>
+
+</table>
+<!--<form action="#" th:action="phone" th:field="${phone}" method="post">-->
+    <!--<input type="hidden" th:value="${phone.id}" name="id" />-->
+    <!--<input type="submit" value="Go somewhere" class="btn btn-primary" />-->
+<!--</form>-->
+<!--<input type="submit" class="reg_but1" value="Оплатить">-->
+
+</body>
+</html>
