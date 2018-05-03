@@ -1,5 +1,7 @@
 body {
     /*background-color: #c7eeee;*/
+    /*border: 1px;*/
+    /*border-color: black;*/
 }
 
 header {
@@ -12,9 +14,9 @@ header {
 }
 
 .logo_img {
-    /*position: absolute;*/
+    position: absolute;
     top: 15px;
-    /*left: 500px;*/
+    left: 500px;
     width: 400px;
     height: 90px;
 }
@@ -608,8 +610,8 @@ th, td {
     position: absolute;
     font-weight: 500;
     font-size: 20px;
-    top: 80px;
-    right: 90px;
+    top: 187px;
+    right: 220px;
 }
 
 .buy_but {

@@ -1,10 +1,11 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Goods {
+public class Goods implements Serializable {
     private Long id;
     private String nameOfModel;
     private String pict;
@@ -393,6 +394,7 @@ public class Goods {
         if (id != null ? !id.equals(goods.id) : goods.id != null) return false;
         if (nameOfModel != null ? !nameOfModel.equals(goods.nameOfModel) : goods.nameOfModel != null) return false;
         if (pict != null ? !pict.equals(goods.pict) : goods.pict != null) return false;
+        if (cost != null ? !cost.equals(goods.cost) : goods.cost != null) return false;
         if (dateOfEntry != null ? !dateOfEntry.equals(goods.dateOfEntry) : goods.dateOfEntry != null) return false;
         if (os != null ? !os.equals(goods.os) : goods.os != null) return false;
         if (screenSize != null ? !screenSize.equals(goods.screenSize) : goods.screenSize != null) return false;
@@ -432,7 +434,8 @@ public class Goods {
         if (batteryType != null ? !batteryType.equals(goods.batteryType) : goods.batteryType != null) return false;
         if (batteryCapacity != null ? !batteryCapacity.equals(goods.batteryCapacity) : goods.batteryCapacity != null)
             return false;
-        return talkTime != null ? talkTime.equals(goods.talkTime) : goods.talkTime == null;
+        if (talkTime != null ? !talkTime.equals(goods.talkTime) : goods.talkTime != null) return false;
+        return orders != null ? orders.equals(goods.orders) : goods.orders == null;
     }
 
     @Override
@@ -440,6 +443,7 @@ public class Goods {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (nameOfModel != null ? nameOfModel.hashCode() : 0);
         result = 31 * result + (pict != null ? pict.hashCode() : 0);
+        result = 31 * result + (cost != null ? cost.hashCode() : 0);
         result = 31 * result + (dateOfEntry != null ? dateOfEntry.hashCode() : 0);
         result = 31 * result + (os != null ? os.hashCode() : 0);
         result = 31 * result + (screenSize != null ? screenSize.hashCode() : 0);
@@ -470,6 +474,7 @@ public class Goods {
         result = 31 * result + (batteryType != null ? batteryType.hashCode() : 0);
         result = 31 * result + (batteryCapacity != null ? batteryCapacity.hashCode() : 0);
         result = 31 * result + (talkTime != null ? talkTime.hashCode() : 0);
+        result = 31 * result + (orders != null ? orders.hashCode() : 0);
         return result;
     }
 

@@ -17,29 +17,29 @@
         <p class="cl2" th:text="${phone.nameOfModel}"></p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
         <p class="op2">Главные характеристики из БД</p>
         <p class="st">Общая стоимость:</p>
-        <p class="price2"  th:text="${phone.cost}"></p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД (СТОИМОСТЬ+ДОСТАВКА???)-->
+        <p class="price2"  th:inline="text" >[[${phone.cost}]] $</p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД (СТОИМОСТЬ+ДОСТАВКА???)-->
         <p class="dos">Доставка</p>
         <p class="pol1">___________________________________</p>
 
         <form action="#" th:action="@{/accept}" th:object="${pay}" method="post">
         <p class="reg3">Город/населенный пункт:</p>
-        <input type="text" th:field="*{city}" class="reg4" placeholder="   г. Минск">
+        <input type="text" th:field="*{city}" class="reg4" placeholder="  г. Минск">
         <p class="reg3">Адрес доставки:</p>
-        <input type="text" th:field="*{address}" class="reg4" placeholder="   Улица, дом, квартира">
+        <input type="text" th:field="*{address}" class="reg4" placeholder="  Улица, дом, квартира" required>
         <p class="reg3">Телефон:</p>
-        <input type="text" th:field="*{phoneNumberDeliv}" class="reg4" placeholder="   +375 (29) 000 00 00">
+        <input type="text" th:field="*{phoneNumberDeliv}" class="reg4" placeholder="  +375 (29/44) 000 00 00">
 
         <p class="opl">Оплата</p>
         <p class="pol2">___________________________________</p>
-
+        <div class="choice">
                 <p class="reg3">Номер карты</p>
-                <input type="number" th:field="*{creditСardNumber}" class="reg4" placeholder="   г. Минск">
+                <input type="text" th:field="*{creditСardNumber}" maxlength="16"class="reg4" placeholder="xxxx xxxx xxxx xxxx" required>
                 <p class="reg3"> CVV</p>
-                <input type="number" th:field="*{cvv}" class="reg4" placeholder="   г. Минск">
+                <input type="text" th:field="*{cvv}" class="reg4"  maxlength="3" placeholder="xxx" required>
                 <p class="reg3"> Дата</p>
-                <input type="number" th:field="*{expiryDate}" class="reg4" placeholder="   г. Минск">
+                <input type="month" th:field="*{expiryDate}" class="reg4"   required>
 
-
+        </div>
         <input type="hidden" th:value="${phone.id}" name="id" />
         <input type="submit" class="pay" value="Оплатить">
         </form>
@@ -47,10 +47,10 @@
         <footer class="footer5">
             <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
             <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img src="resources/vk.svg" class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img src="resources/twitter.png" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="resources/facebook.png" class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img src="resources/instagram.png" class="instagram"></a>
+            <a href="https://vk.com/samsung" ><img src="vk.svg" class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img src="twitter.png" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="facebook.png" class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img src="instagram.png" class="instagram"></a>
         </footer>
     </body>
 </html>

@@ -1,25 +1,27 @@
 package by.bsuir.model;
 
-import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import by.bsuir.model.Clients;
+import by.bsuir.model.DeliveryPlace;
+import by.bsuir.model.Goods;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Orders {
+public class Orders implements Serializable {
     private Long id;
-    private Date orderDate;
-    private Time timeOfOrder;
+    private String orderDate;
+    private String timeOfOrder;
     private String orderStatus;
-    private String orderCost;
+    private Double orderCost;
     private String payment;
     private String delivery;
     private Long idClient;
-    private Long idEmployee;
     private Long idDeliveryPlace;
     private Clients clientsByIdClient;
-    private Employees employeesByIdEmployee;
     private DeliveryPlace deliveryPlaceByIdDeliveryPlace;
     private List<Goods> goods;
 
@@ -37,21 +39,21 @@ public class Orders {
 
     @Basic
     @Column(name = "order_date")
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
     @Basic
     @Column(name = "time_of_order")
-    public Time getTimeOfOrder() {
+    public String getTimeOfOrder() {
         return timeOfOrder;
     }
 
-    public void setTimeOfOrder(Time timeOfOrder) {
+    public void setTimeOfOrder(String timeOfOrder) {
         this.timeOfOrder = timeOfOrder;
     }
 
@@ -67,11 +69,11 @@ public class Orders {
 
     @Basic
     @Column(name = "order_cost")
-    public String getOrderCost() {
+    public Double getOrderCost() {
         return orderCost;
     }
 
-    public void setOrderCost(String orderCost) {
+    public void setOrderCost(Double orderCost) {
         this.orderCost = orderCost;
     }
 
@@ -106,16 +108,6 @@ public class Orders {
     }
 
     @Basic
-    @Column(name = "id_employee")
-    public Long getIdEmployee() {
-        return idEmployee;
-    }
-
-    public void setIdEmployee(Long idEmployee) {
-        this.idEmployee = idEmployee;
-    }
-
-    @Basic
     @Column(name = "id_delivery_place")
     public Long getIdDeliveryPlace() {
         return idDeliveryPlace;
@@ -124,6 +116,7 @@ public class Orders {
     public void setIdDeliveryPlace(Long idDeliveryPlace) {
         this.idDeliveryPlace = idDeliveryPlace;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -140,11 +133,13 @@ public class Orders {
         if (payment != null ? !payment.equals(orders.payment) : orders.payment != null) return false;
         if (delivery != null ? !delivery.equals(orders.delivery) : orders.delivery != null) return false;
         if (idClient != null ? !idClient.equals(orders.idClient) : orders.idClient != null) return false;
-        if (idEmployee != null ? !idEmployee.equals(orders.idEmployee) : orders.idEmployee != null) return false;
         if (idDeliveryPlace != null ? !idDeliveryPlace.equals(orders.idDeliveryPlace) : orders.idDeliveryPlace != null)
             return false;
-
-        return true;
+        if (clientsByIdClient != null ? !clientsByIdClient.equals(orders.clientsByIdClient) : orders.clientsByIdClient != null)
+            return false;
+        if (deliveryPlaceByIdDeliveryPlace != null ? !deliveryPlaceByIdDeliveryPlace.equals(orders.deliveryPlaceByIdDeliveryPlace) : orders.deliveryPlaceByIdDeliveryPlace != null)
+            return false;
+        return goods != null ? goods.equals(orders.goods) : orders.goods == null;
     }
 
     @Override
@@ -157,8 +152,10 @@ public class Orders {
         result = 31 * result + (payment != null ? payment.hashCode() : 0);
         result = 31 * result + (delivery != null ? delivery.hashCode() : 0);
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
-        result = 31 * result + (idEmployee != null ? idEmployee.hashCode() : 0);
         result = 31 * result + (idDeliveryPlace != null ? idDeliveryPlace.hashCode() : 0);
+        result = 31 * result + (clientsByIdClient != null ? clientsByIdClient.hashCode() : 0);
+        result = 31 * result + (deliveryPlaceByIdDeliveryPlace != null ? deliveryPlaceByIdDeliveryPlace.hashCode() : 0);
+        result = 31 * result + (goods != null ? goods.hashCode() : 0);
         return result;
     }
 
@@ -172,15 +169,7 @@ public class Orders {
         this.clientsByIdClient = clientsByIdClient;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
-    public Employees getEmployeesByIdEmployee() {
-        return employeesByIdEmployee;
-    }
 
-    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
-        this.employeesByIdEmployee = employeesByIdEmployee;
-    }
 
     @ManyToOne
     @JoinColumn(name = "id_delivery_place", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)

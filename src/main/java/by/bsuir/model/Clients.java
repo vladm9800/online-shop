@@ -1,11 +1,12 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 @Entity
-public class Clients {
+public class Clients implements Serializable {
     private Long id;
     private String login;
     private String password;

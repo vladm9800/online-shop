@@ -5,8 +5,8 @@ public class CardAndDelivery {
     private String address;
     private String phoneNumberDeliv;
 
-    private Integer creditСardNumber;
-    private Integer cvv;
+    private String creditСardNumber;
+    private String cvv;
     private String expiryDate;
 
 
@@ -14,7 +14,7 @@ public class CardAndDelivery {
     public CardAndDelivery() {
     }
 
-    public CardAndDelivery(Integer creditСardNumber, Integer cvv, String expiryDate, String city, String address, String phoneNumberDeliv, Long idPhone) {
+    public CardAndDelivery(String creditСardNumber, String cvv, String expiryDate, String city, String address, String phoneNumberDeliv, Long idPhone) {
         this.creditСardNumber = creditСardNumber;
         this.cvv = cvv;
         this.expiryDate = expiryDate;
@@ -24,19 +24,19 @@ public class CardAndDelivery {
 
     }
 
-    public Integer getCreditСardNumber() {
+    public String getCreditСardNumber() {
         return creditСardNumber;
     }
 
-    public void setCreditСardNumber(Integer creditСardNumber) {
+    public void setCreditСardNumber(String creditСardNumber) {
         this.creditСardNumber = creditСardNumber;
     }
 
-    public Integer getCvv() {
+    public String getCvv() {
         return cvv;
     }
 
-    public void setCvv(Integer cvv) {
+    public void setCvv(String cvv) {
         this.cvv = cvv;
     }
 

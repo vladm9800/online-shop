@@ -1,12 +1,13 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
 @Entity
 @Table(name = "delivery_place", schema = "online_shop", catalog = "")
-public class DeliveryPlace {
+public class DeliveryPlace implements Serializable {
     private Long id;
     private String city;
     private String address;

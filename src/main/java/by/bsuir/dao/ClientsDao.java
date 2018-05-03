@@ -11,6 +11,5 @@ import java.util.List;
 
 @Repository
 public interface ClientsDao extends CrudRepository<Clients,Long>  {
-//    @Query("select u from Clients u where u.login = :#{login}")
-//    Clients findClientsByLogin(String login);
+
 }

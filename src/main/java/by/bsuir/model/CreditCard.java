@@ -1,14 +1,15 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name = "credit_card", schema = "online_shop", catalog = "")
-public class CreditCard {
+public class CreditCard  implements Serializable {
     private Long id;
-    private Integer creditСardNumber;
-    private Integer cvv;
+    private String creditСardNumber;
+    private String cvv;
     private String expiryDate;
     private Long idClient;
     private Clients clientsByIdClient;
@@ -16,7 +17,7 @@ public class CreditCard {
     public CreditCard() {
     }
 
-    public CreditCard(Integer creditСardNumber, Integer cvv, String expiryDate) {
+    public CreditCard(String creditСardNumber, String cvv, String expiryDate) {
         this.creditСardNumber = creditСardNumber;
         this.cvv = cvv;
         this.expiryDate = expiryDate;
@@ -35,11 +36,11 @@ public class CreditCard {
 
     @Basic
     @Column(name = "creditСard_number")
-    public Integer getCreditСardNumber() {
+    public String getCreditСardNumber() {
         return creditСardNumber;
     }
 
-    public void setCreditСardNumber(Integer creditСardNumber) {
+    public void setCreditСardNumber(String creditСardNumber) {
         this.creditСardNumber = creditСardNumber;
     }
 
@@ -47,11 +48,11 @@ public class CreditCard {
 
     @Basic
     @Column(name = "cvv")
-    public Integer getCvv() {
+    public String getCvv() {
         return cvv;
     }
 
-    public void setCvv(Integer cvv) {
+    public void setCvv(String cvv) {
         this.cvv = cvv;
     }
 
@@ -80,27 +81,25 @@ public class CreditCard {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CreditCard that = (CreditCard) o;
+        CreditCard card = (CreditCard) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (creditСardNumber != null ? !creditСardNumber.equals(that.creditСardNumber) : that.creditСardNumber != null)
+        if (id != null ? !id.equals(card.id) : card.id != null) return false;
+        if (creditСardNumber != null ? !creditСardNumber.equals(card.creditСardNumber) : card.creditСardNumber != null)
             return false;
-
-        if (cvv != null ? !cvv.equals(that.cvv) : that.cvv != null) return false;
-        if (expiryDate != null ? !expiryDate.equals(that.expiryDate) : that.expiryDate != null) return false;
-        if (idClient != null ? !idClient.equals(that.idClient) : that.idClient != null) return false;
-
-        return true;
+        if (cvv != null ? !cvv.equals(card.cvv) : card.cvv != null) return false;
+        if (expiryDate != null ? !expiryDate.equals(card.expiryDate) : card.expiryDate != null) return false;
+        if (idClient != null ? !idClient.equals(card.idClient) : card.idClient != null) return false;
+        return clientsByIdClient != null ? clientsByIdClient.equals(card.clientsByIdClient) : card.clientsByIdClient == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (creditСardNumber != null ? creditСardNumber.hashCode() : 0);
-
         result = 31 * result + (cvv != null ? cvv.hashCode() : 0);
         result = 31 * result + (expiryDate != null ? expiryDate.hashCode() : 0);
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
+        result = 31 * result + (clientsByIdClient != null ? clientsByIdClient.hashCode() : 0);
         return result;
     }
 

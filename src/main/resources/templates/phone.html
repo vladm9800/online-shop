@@ -20,7 +20,7 @@
             <!--<img class="phone" src="https://content2.onliner.by/catalog/device/header/939908762a8a37184b9ee967945b17ab.jpeg">-->
             <p class="cl1" th:text="${phone.nameOfModel}"></p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
             <p class="op1">Главные характеристики из БД</p>
-            <p class="price1" th:text="${phone.cost}"></p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД-->
+            <p class="price1" th:inline="text" >[[${phone.cost}]] р.</p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД-->
 
         <form action="#" th:action="pay" th:field="${phone}" method="post">
             <input type="hidden" th:value="${phone.id}" name="id" />
@@ -91,7 +91,7 @@
                         <a>Количество точек матрицы</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.mp}">???</a>
+                        <a th:inline="text" >[[${phone.mp}]] Мп</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -128,7 +128,7 @@
                         <a>Тактовая частота процессора</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.clockSpeed}">???</a>
+                        <a th:inline="text" >[[${phone.clockSpeed}]] МГц</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -144,7 +144,7 @@
                         <a>Разрядность процессора</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.sizeOfProcessor}">???</a>
+                        <a th:inline="text" >[[${phone.sizeOfProcessor}]] бита</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -186,7 +186,7 @@
                         <a>Длина</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.length}">???</a>
+                        <a th:inline="text" >[[${phone.length}]] мм</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -194,7 +194,7 @@
                         <a>Ширина</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.width}">???</a>
+                        <a th:inline="text" >[[${phone.width}]] мм</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -202,7 +202,7 @@
                         <a>Толщина</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.thickness}">???</a>
+                        <a th:inline="text" >[[${phone.thickness}]] мм</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -210,7 +210,7 @@
                         <a>Вес</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.weight}">???</a>
+                        <a  th:inline="text" >[[${phone.weight}]] г</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -231,7 +231,7 @@
                         <a>Количество цветов экрана</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.numOfColorsOfScreen}">???</a>
+                        <a  th:inline="text" >[[${phone.numOfColorsOfScreen}]] млн</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -297,7 +297,7 @@
                         <a>Ёмкость аккумулятора</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.batteryCapacity}">???</a>
+                        <a th:inline="text" >[[${phone.batteryCapacity}]] мА·ч</a>
                     </th>
                 </tr>
                 <tr class="t2">
@@ -305,7 +305,7 @@
                         <a>Время разговора</a>
                     </th>
                     <th class="t4">
-                        <a th:text="${phone.talkTime}" >???</a>
+                        <a  th:inline="text" >[[${phone.talkTime}]] ч</a>
                     </th>
                 </tr>
 

@@ -1,11 +1,12 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
 @Entity
-public class Delivery {
+public class Delivery implements Serializable {
     private Long id;
     private Double totalWeight;
     private Integer sumGoods;
@@ -13,10 +14,10 @@ public class Delivery {
     private Time timeOfDelivery;
     private String regionOfMinsk;
     private Double costOfDelivery;
-    private Long idEmployee;
+
     private String deliveryStatus;
     private String typeOfDelivery;
-    private Employees employeesByIdEmployee;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,15 +90,7 @@ public class Delivery {
         this.costOfDelivery = costOfDelivery;
     }
 
-    @Basic
-    @Column(name = "id_employee")
-    public Long getIdEmployee() {
-        return idEmployee;
-    }
 
-    public void setIdEmployee(Long idEmployee) {
-        this.idEmployee = idEmployee;
-    }
 
     @Basic
     @Column(name = "delivery_status")
@@ -138,13 +131,9 @@ public class Delivery {
             return false;
         if (costOfDelivery != null ? !costOfDelivery.equals(delivery.costOfDelivery) : delivery.costOfDelivery != null)
             return false;
-        if (idEmployee != null ? !idEmployee.equals(delivery.idEmployee) : delivery.idEmployee != null) return false;
         if (deliveryStatus != null ? !deliveryStatus.equals(delivery.deliveryStatus) : delivery.deliveryStatus != null)
             return false;
-        if (typeOfDelivery != null ? !typeOfDelivery.equals(delivery.typeOfDelivery) : delivery.typeOfDelivery != null)
-            return false;
-
-        return true;
+        return typeOfDelivery != null ? typeOfDelivery.equals(delivery.typeOfDelivery) : delivery.typeOfDelivery == null;
     }
 
     @Override
@@ -156,21 +145,12 @@ public class Delivery {
         result = 31 * result + (timeOfDelivery != null ? timeOfDelivery.hashCode() : 0);
         result = 31 * result + (regionOfMinsk != null ? regionOfMinsk.hashCode() : 0);
         result = 31 * result + (costOfDelivery != null ? costOfDelivery.hashCode() : 0);
-        result = 31 * result + (idEmployee != null ? idEmployee.hashCode() : 0);
         result = 31 * result + (deliveryStatus != null ? deliveryStatus.hashCode() : 0);
         result = 31 * result + (typeOfDelivery != null ? typeOfDelivery.hashCode() : 0);
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_employee", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
-    public Employees getEmployeesByIdEmployee() {
-        return employeesByIdEmployee;
-    }
 
-    public void setEmployeesByIdEmployee(Employees employeesByIdEmployee) {
-        this.employeesByIdEmployee = employeesByIdEmployee;
-    }
 
 
 }

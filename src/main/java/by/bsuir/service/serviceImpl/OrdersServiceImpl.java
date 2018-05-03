@@ -1,6 +1,7 @@
 package by.bsuir.service.serviceImpl;
 
 import by.bsuir.dao.OrderDao;
+import by.bsuir.model.DeliveryPlace;
 import by.bsuir.model.Goods;
 import by.bsuir.model.Orders;
 import by.bsuir.service.OrdersService;
@@ -14,10 +15,14 @@ public class OrdersServiceImpl implements OrdersService {
 
     private OrderDao orderDao;
 
-    public void addOrder(Goods phone){
+    public void addOrder(Goods phone, String date,String time,Long idplace){
         Orders orders = new Orders();
         orders.setGoods(new ArrayList<>());
         orders.getGoods().add(phone);
+        orders.setOrderDate(date);
+        orders.setTimeOfOrder(time);
+        orders.setOrderCost(phone.getCost());
+        orders.setIdDeliveryPlace(idplace);
         orderDao.save(orders);
     }
 
