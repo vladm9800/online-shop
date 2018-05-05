@@ -37,16 +37,17 @@
     </nav>
 </header>
 <body>
-<h1 class="mt-5 text-center">Добро пожаловать </h1>
-<p></p>
+<h1 class="mt-5 text-center">Добро пожаловать !</h1>
+<h2 class="mt-5 text-center" sec:authentication="name"></h2>
+
 <div class="container">
 
 
     <form action="#" th:action="@{/admin/manageUsers}" method="post">
         <div class="card bg-white rounded shadow-sm border-info mb-3 text-center">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">Управление пользователями</h5>
+                <p class="card-text">В данном разделе предоставляется управление пользователями.</p>
                 <input type="submit" value="Перейти" class="btn btn-primary btn-sm" />
             </div>
         </div>
@@ -55,8 +56,8 @@
     <form action="#" th:action="@{/admin/manageOrders}" method="post">
         <div class="card  bg-white rounded shadow-sm mb-3 border-info text-center">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">Управление заказами</h5>
+                <p class="card-text">В данном разделе предоставляется возможность просмотра заказов и их удаление.</p>
                 <input type="submit" value="Перейти" class="btn btn-primary btn-sm" />
             </div>
         </div>

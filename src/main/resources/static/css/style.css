@@ -4,14 +4,14 @@ body {
     /*border-color: black;*/
 }
 
-header {
-    width: 100%;
-    height: 105px;
-    background-color: #bee4ed;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
+/*header {*/
+    /*width: 100%;*/
+    /*height: 105px;*/
+    /*background-color: #bee4ed;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*display: flex;*/
+/*}*/
 
 .logo_img {
     position: absolute;
@@ -85,7 +85,7 @@ th, td {
 
 .footer1 {
     position: relative;
-    top: 930px;
+    /*top: 930px;*/
     width: 100%;
     height: 70px;
     background-color: #bee4ed;
@@ -243,7 +243,7 @@ th, td {
 
 .footer3 {
     position: relative;
-    top: 470px;
+    /*top: 470px;*/
     width: 100%;
     height: 70px;
     background-color: #bee4ed;
@@ -412,7 +412,7 @@ th, td {
 
 .dp {
     position: relative;
-    top: -20px;
+    /*top: -20px;*/
     /*left: 20px;*/
     text-align: center;
     font-size: 30px;
@@ -497,8 +497,8 @@ th, td {
 }
 
 .footer5 {
-    position: relative;
-    top: 320px;
+    position: absolute;
+    top: 750px;
     width: 100%;
     height: 70px;
     background-color: #bee4ed;
@@ -543,8 +543,8 @@ th, td {
 
 .price2 {
     position: absolute;
-    top: 180px;
-    right: 130px;
+    top: 190px;
+    right: 90px;
     font-size: 40px;
     font-weight: bold;
     color: black;
@@ -574,7 +574,7 @@ th, td {
     position: relative;
     left: 100px;
     width: 400px;
-    top: 290px;
+    top: 300px;
     font-size: 20px;
 }
 
@@ -599,7 +599,7 @@ th, td {
 .pol2 {
     position: absolute;
     top: 420px;
-    right: 105px;
+    right: 185px;
     /*text-align: center;*/
     font-size: 30px;
     font-weight: bold;
@@ -613,7 +613,13 @@ th, td {
     top: 187px;
     right: 220px;
 }
-
+.choice1{
+    position: absolute;
+    font-weight: 500;
+    font-size: 20px;
+    top: 187px;
+    left:10px;
+}
 .buy_but {
     position: absolute;
     top: 700px;

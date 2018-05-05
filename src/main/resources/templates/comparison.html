@@ -8,22 +8,37 @@
 
     </head>
     <body>
-        <header>
-            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
-            <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico"> </a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
+            <div class="container">
+                <a class="navbar-brand" >
+                    <img th:src="@{/images/samsung_logo.png}" width="150" height="30" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/}">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
 
-            <form action="" class="search">
-                <input type="text" placeholder="Поиск в каталоге">
-                <input type="submit" value="Искать">
-            </form>
-
-            <div sec:authorize="isAuthenticated()">
-                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()"class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}">Logout</a>
+                        </li>
+                        <li sec:authorize="!isAuthenticated()"class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">LogIn</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div sec:authorize="!isAuthenticated()">
-                <a href="/login" target="_blank" class="login">Вход в систему</a>
-            </div>
-        </header>
+        </nav>
+    </header>
         <p class="sr">Сравнение товаров</p>
         <table class="t5">
             <th class="t8">

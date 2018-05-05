@@ -4,19 +4,47 @@
         <meta charset="UTF-8">
         <title>Pay</title>
         <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+
+        <link href="css/logo-nav.css" rel="stylesheet">
         <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     </head>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
+            <div class="container">
+                <a class="navbar-brand" >
+                    <img th:src="@{/images/samsung_logo.png}" width="150" height="30" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/}">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()"class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}">Logout</a>
+                        </li>
+                        <li sec:authorize="!isAuthenticated()"class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">LogIn</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
     <body>
-        <header>
-            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
-            <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico">
-            <div sec:authorize="isAuthenticated()">
-                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
-            </div>
-            <div sec:authorize="!isAuthenticated()">
-                <a href="/login" target="_blank" class="login">Вход в систему</a>
-            </div>
-        </header>
+
         <p class="dp">Оформление заказа</p>
         <img class="phone3" th:src="${phone.pict}">
         <!--<img class="phone" src="https://content2.onliner.by/catalog/device/header/939908762a8a37184b9ee967945b17ab.jpeg">-->
@@ -28,13 +56,14 @@
         <p class="pol1">___________________________________</p>
 
         <form action="#" th:action="@{/accept}" th:object="${pay}" method="post">
+            <div class="choice1">
         <p class="reg3">Город/населенный пункт:</p>
         <input type="text" th:field="*{city}" class="reg4" placeholder="  г. Минск">
         <p class="reg3">Адрес доставки:</p>
         <input type="text" th:field="*{address}" class="reg4" placeholder="  Улица, дом, квартира" required>
         <p class="reg3">Телефон:</p>
         <input type="text" th:field="*{phoneNumberDeliv}" class="reg4" placeholder="  +375 (29/44) 000 00 00">
-
+            </div>
         <p class="opl">Оплата</p>
         <p class="pol2">___________________________________</p>
         <div class="choice">
@@ -51,14 +80,15 @@
         <input type="submit" class="pay" value="Оплатить">
         </form>
 
-        <footer class="footer5">
-            <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
-            <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
-
-        </footer>
     </body>
+
+    <footer class="footer5">
+        <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
+        <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
+        <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+        <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+        <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+        <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+
+    </footer>
 </html>

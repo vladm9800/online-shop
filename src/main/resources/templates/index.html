@@ -4,72 +4,85 @@
         <meta charset="UTF-8">
         <title>Samsung online-shop</title>
         <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
-        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 
+        <link href="css/logo-nav.css" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
+
     </head>
-    <body>
-        <header >
-            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
-            <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
+            <div class="container">
+                <a class="navbar-brand" >
+                    <img th:src="@{/images/samsung_logo.png}" width="150" height="30" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/}">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
 
-            <span sec:authorize="isAuthenticated()" style="display: inline-block;">
-                    | Logged user: <span sec:authentication="name"></span> |
-                    Roles: <span sec:authentication="principal.authorities"></span> |
-                    <a th:href="@{/logout}">Sign Out</a>
-                </span>
-
-            <form action="" class="search">
-                <input type="text" placeholder="Поиск в каталоге">
-                <input type="submit" value="Искать">
-            </form>
-
-            <div sec:authorize="isAuthenticated()">
-                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()"class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}">Logout</a>
+                        </li>
+                        <li sec:authorize="!isAuthenticated()"class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">LogIn</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div sec:authorize="!isAuthenticated()">
-            <a href="/login" target="_blank" class="login">Вход в систему</a>
-            </div>
-        </header>
-        <!--<div class="container">-->
+        </nav>
+    </header>
+<body>
+    <div class="container">
         <div class="card-group ">
             <div th:each="phone : ${phones}">
 
-            <div class="card,shadow-lg p-3 mb-5 bg-white rounded  text-center" >
-                <img class="card-img-top" th:src="${phone.pict}" style="height:250px;width:200px;  " alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${phone.nameOfModel}"/>
-                    <p class="card-text" th:text="${phone.os}"/>
-                    <form action="#" th:action="phone" th:field="${phone}" method="post">
-                        <input type="hidden" th:value="${phone.id}" name="id" />
-                        <input type="submit" value="Подробнее" class="btn btn-outline-primary" />
-                    </form>
-                    <form action="#" th:action="select" th:field="${phone}" method="get">
-                        <input type="hidden" th:value="${phone.id}" name="id" />
-                        <input type="submit" value="В сравнение" class="btn btn-primary btn-sm" />
-                    </form>
-                    <!--<a th:href="@{/phone(id=${phone.id})}" class="btn btn-primary">Go somewhere</a>-->
+                <div class="card,shadow-lg p-3 mb-5 bg-white rounded  text-center" >
+                    <img class="card-img-top" th:src="${phone.pict}" style="height:250px;width:200px;  " alt="Card image cap">
+                    <div class="card-body grow">
+                        <h5 class="card-title" th:text="${phone.nameOfModel}"/>
+                        <p class="card-text" th:text="${phone.os}"/>
+                        <form action="#" th:action="phone" th:field="${phone}" method="post">
+                            <input type="hidden" th:value="${phone.id}" name="id" />
+                            <input type="submit" value="Подробнее" class="btn btn-outline-primary" />
+                        </form>
+                        <form action="#" th:action="select" th:field="${phone}" method="get">
+                            <input type="hidden" th:value="${phone.id}" name="id" />
+                            <input type="submit" value="В сравнение" class="btn btn-primary btn-sm" />
+                        </form>
+                        <!--<a th:href="@{/phone(id=${phone.id})}" class="btn btn-primary">Go somewhere</a>-->
+                    </div>
+
+
                 </div>
-
-
             </div>
         </div>
-        </div>
-        <!--</div>-->
-        <form action="#" th:action="comparison"  method="get">
+    </div>
+    <form action="#" th:action="comparison"  method="get">
 
-            <input type="submit" value="В сравнение" class="btn btn-primary btn-sm" />
-        </form>
+        <input type="submit" value="В сравнение" class="btn btn-primary btn-sm" />
+    </form>
 
-        <footer class="footer1">
-            <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
-            <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
 
-        </footer>
-    </body>
+</body>
+    <footer class="footer1">
+
+        <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
+        <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
+        <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+        <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+        <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+        <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+
+    </footer>
 </html>
