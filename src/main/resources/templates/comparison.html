@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Сравнение</title>
+        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+        <link rel="stylesheet" th:href="@{/css/style.css}"  type="text/css">
+
+    </head>
+    <body>
+        <header>
+            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
+            <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico"> </a>
+
+            <form action="" class="search">
+                <input type="text" placeholder="Поиск в каталоге">
+                <input type="submit" value="Искать">
+            </form>
+
+            <div sec:authorize="isAuthenticated()">
+                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login" target="_blank" class="login">Вход в систему</a>
+            </div>
+        </header>
+        <p class="sr">Сравнение товаров</p>
+        <table class="t5">
+            <th class="t8">
+                <a>
+                    Вся нижеприведенная информация получена из открытых<br>
+                    источников, в том числе с официальных сайтов и из<br>
+                    каталогов. Поскольку мы не можем гарантировать<br>
+                    100%-ную точность и полноту описаний товаров,<br>
+                    ОБЯЗАТЕЛЬНО уточняйте у продавца важные для вас<br>
+                    параметры и осматривайте товар при получении. После<br>
+                    оплаты вернуть или обменять неподходящий товар будет<br>
+                    проблематично. Все опубликованные в данном каталоге<br>
+                    материалы являются собственностью ООО «Котики»,<br>
+                    любая публикация или копирование (полное или<br>
+                    частичное) без предварительного согласия запрещены.
+                </a>
+            </th>
+            <th class="t8">
+                <a>
+                    <img class="phone4" th:src="${phoneOne.pict}">
+                    <p class="ss1"  th:text="${phoneOne.nameOfModel}">Samsung Galaxy S9</p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
+                    <p class="price3" th:inline="text" >[[${phoneOne.cost}]] р.</p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД-->
+                </a>
+            </th>
+            <th class="t8">
+                <a>
+                <img class="phone4" th:src="${phoneTwo.pict}" >
+                    <p class="ss1" th:text="${phoneTwo.nameOfModel}">Samsung Galaxy S6</p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
+                    <p class="price3" th:inline="text" >[[${phoneTwo.cost}]] р.</p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД-->
+                </a>
+            </th>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Общая информация</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Дата выхода на рынок</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.dateOfEntry}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.dateOfEntry}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Основные</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Операционная система</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.os}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.os}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Размер экрана</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.screenSize}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.screenSize}"> ???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Разрешение экрана</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.screenResolution}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.screenResolution}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Оперативная память</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.ram}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.ram}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Флэш-память</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.flashMemory}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.flashMemory}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Количество точек матрицы</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text"> [[${phoneOne.mp}]] Мп</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text"> [[${phoneTwo.mp}]] Мп</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Количество SIM-карт</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.numOfSimCards}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.numOfSimCards}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Максимальное разрешение видео</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.maxVideoResolurion}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.maxVideoResolurion}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Процессор</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Процессор</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.cpu}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.cpu}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Тактовая частота процессора</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.clockSpeed}]] МГц</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.clockSpeed}]] МГц</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Количество ядер</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.numOfCores}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.numOfCores}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Разрядность процессора</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.sizeOfProcessor}]] бита</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.sizeOfProcessor}]] бита</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Конструкция</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Конструкция корпуса</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.housingDesign}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.housingDesign}">???</a>
+                </th>
+            </tr>
+            <tr class="t8">
+                <th class="t8">
+                    <a>Цвет корпуса</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.colorOfCase}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.colorOfCase}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Цвет фронтальной панели</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.frontPanelColor}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.frontPanelColor}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Размеры и вес</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Длина</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.length}]] мм</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.length}]] мм</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Ширина</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.width}]] мм</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.width}]] мм</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Толщина</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.thickness}]] мм</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.thickness}]] мм</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Вес</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.weight}]] г</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.weight}]] г</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Экран</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Технология экрана</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.screenTechnology}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.screenTechnology}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Количество цветов экрана</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.numOfColorsOfScreen}]] млн</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.numOfColorsOfScreen}]] млн</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Соотношение сторон</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.aspectRatio}"</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.aspectRatio}"</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Интерфейсы</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Bluetooth</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.bluetooth}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.bluetooth}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Аудиовыход</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.audioOutput}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.audioOutput}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Wi-Fi</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.wiFi}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.wiFi}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Разъём подключения</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.connectionConnector}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.connectionConnector}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t7" colspan="3">
+                    <a>Аккумулятор и время работы</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Тип аккумулятора</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneOne.batteryType}">???</a>
+                </th>
+                <th class="t8">
+                    <a th:text="${phoneTwo.batteryType}">???</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Ёмкость аккумулятора</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.batteryCapacity}]] мА·ч</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.batteryCapacity}]] мА·ч</a>
+                </th>
+            </tr>
+            <tr class="t6">
+                <th class="t8">
+                    <a>Время разговора</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneOne.talkTime}]] ч</a>
+                </th>
+                <th class="t8">
+                    <a th:inline="text" >[[${phoneTwo.talkTime}]] ч</a>
+                </th>
+            </tr>
+        </table>
+        <footer class="footer6">
+
+                <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
+                <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
+                <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+                <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+                <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+                <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+
+        </footer>
+    </body>
+</html>

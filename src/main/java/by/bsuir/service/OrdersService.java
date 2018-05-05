@@ -1,6 +1,5 @@
 package by.bsuir.service;
 
-import by.bsuir.model.DeliveryPlace;
 import by.bsuir.model.Goods;
 
 public interface OrdersService {

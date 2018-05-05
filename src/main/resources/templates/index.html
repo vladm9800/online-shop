@@ -1,25 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Samsung online-shop</title>
-        <link rel="icon" href="Samsung-Logo.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     </head>
     <body>
-        <header>
-            <img class="logo_img" src="samsung_logo.png">
-            <img class="login_pic" src="login.ico">
+        <header >
+            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
+            <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico">
+
+            <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}">Sign Out</a>
+                </span>
+
             <form action="" class="search">
                 <input type="text" placeholder="Поиск в каталоге">
                 <input type="submit" value="Искать">
             </form>
+
+            <div sec:authorize="isAuthenticated()">
+                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
             <a href="/login" target="_blank" class="login">Вход в систему</a>
+            </div>
         </header>
         <!--<div class="container">-->
-        <div class="card-group">
+        <div class="card-group ">
             <div th:each="phone : ${phones}">
 
             <div class="card,shadow-lg p-3 mb-5 bg-white rounded  text-center" >
@@ -31,6 +45,10 @@
                         <input type="hidden" th:value="${phone.id}" name="id" />
                         <input type="submit" value="Подробнее" class="btn btn-outline-primary" />
                     </form>
+                    <form action="#" th:action="select" th:field="${phone}" method="get">
+                        <input type="hidden" th:value="${phone.id}" name="id" />
+                        <input type="submit" value="В сравнение" class="btn btn-primary btn-sm" />
+                    </form>
                     <!--<a th:href="@{/phone(id=${phone.id})}" class="btn btn-primary">Go somewhere</a>-->
                 </div>
 
@@ -39,14 +57,19 @@
         </div>
         </div>
         <!--</div>-->
+        <form action="#" th:action="comparison"  method="get">
+
+            <input type="submit" value="В сравнение" class="btn btn-primary btn-sm" />
+        </form>
 
         <footer class="footer1">
             <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
             <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img src="vk.svg" class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img src="twitter.png" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="facebook.png" class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img src="instagram.png" class="instagram"></a>
+            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+
         </footer>
     </body>
 </html>

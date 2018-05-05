@@ -1,13 +1,12 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
-
 
 @Entity
 @Table(name = "delivery_place", schema = "online_shop", catalog = "")
-public class DeliveryPlace implements Serializable {
+public class DeliveryPlace {
     private Long id;
     private String city;
     private String address;
@@ -43,6 +42,7 @@ public class DeliveryPlace implements Serializable {
     public void setCity(String city) {
         this.city = city;
     }
+
     @Basic
     @Column(name = "address")
     public String getAddress() {
@@ -52,9 +52,6 @@ public class DeliveryPlace implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-
-
-
 
     @Basic
     @Column(name = "phone_number_deliv")
@@ -78,7 +75,8 @@ public class DeliveryPlace implements Serializable {
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (phoneNumberDeliv != null ? !phoneNumberDeliv.equals(that.phoneNumberDeliv) : that.phoneNumberDeliv != null)
             return false;
-        return ordersById != null ? ordersById.equals(that.ordersById) : that.ordersById == null;
+
+        return true;
     }
 
     @Override
@@ -87,7 +85,6 @@ public class DeliveryPlace implements Serializable {
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (phoneNumberDeliv != null ? phoneNumberDeliv.hashCode() : 0);
-        result = 31 * result + (ordersById != null ? ordersById.hashCode() : 0);
         return result;
     }
 

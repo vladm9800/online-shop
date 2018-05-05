@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
     <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-        <link rel="icon" href="icon.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css" type="text/css">
-    </head>
-    <body>
+            <meta charset="UTF-8">
+            <title>Login</title>
+            <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+            <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+        </head>
+        <body>
         <header>
-            <img class="logo_img" src="samsung_logo.png">
-            <a href="index.html"> <img class="login_pic" src="login.ico"> </a>
+            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
+            <a href="index.html"> <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico"> </a>
         </header>
         <div id="wrapper">
-            <form name="login-form" class="login-form" action="" method="post">
+            <form action=""  th:action="@{/login}" th:object="${user}" name="login-form" class="login-form" method="post">
                 <div class="header">
                     <h1>Авторизация</h1>
                     <span>Введите ваши регистрационные данные для входа в личный кабинет. Если вы не зарегистрированы, то нажмите "регистрация".</span>
                 </div>
                 <div class="content">
-                    <input name="username" type="text" class="input username" value="Логин" onfocus="this.value=''" />
-                    <input name="password" type="password" class="input password" value="Пароль" onfocus="this.value=''" />
+                    <input id="login" name="login" type="text" class="input username"  value="Логин" onfocus="this.value=''" />
+                    <input id="password" name="password" type="password" class="input password"  value="Пароль" onfocus="this.value=''" />
                 </div>
                 <div class="footer">
                     <input type="submit" name="submit" value="Войти" class="button" />
@@ -31,10 +31,10 @@
         <footer class="footer3">
             <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
             <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img src="vk.svg" class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img src="twitter.png" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="facebook.png" class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img src="/instagram.png" class="instagram"></a>
+            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
         </footer>
     </body>
 </html>

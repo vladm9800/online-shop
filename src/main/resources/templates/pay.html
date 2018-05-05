@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Pay</title>
-        <link rel="icon" href="icon.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     </head>
     <body>
         <header>
-            <img class="logo_img" src="samsung_logo.png">
-            <a href="phone.html"> <img class="login_pic" src="login.ico"> </a>
+            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
+            <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico">
+            <div sec:authorize="isAuthenticated()">
+                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login" target="_blank" class="login">Вход в систему</a>
+            </div>
         </header>
         <p class="dp">Оформление заказа</p>
         <img class="phone3" th:src="${phone.pict}">
@@ -17,7 +23,7 @@
         <p class="cl2" th:text="${phone.nameOfModel}"></p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
         <p class="op2">Главные характеристики из БД</p>
         <p class="st">Общая стоимость:</p>
-        <p class="price2"  th:inline="text" >[[${phone.cost}]] $</p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД (СТОИМОСТЬ+ДОСТАВКА???)-->
+        <p class="price2"  th:inline="text" >  [[${phone.cost}]] р</p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД (СТОИМОСТЬ+ДОСТАВКА???)-->
         <p class="dos">Доставка</p>
         <p class="pol1">___________________________________</p>
 
@@ -47,10 +53,11 @@
         <footer class="footer5">
             <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
             <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img src="vk.svg" class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img src="twitter.png" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="facebook.png" class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img src="instagram.png" class="instagram"></a>
+            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+
         </footer>
     </body>
 </html>

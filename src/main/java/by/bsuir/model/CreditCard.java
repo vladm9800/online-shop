@@ -1,18 +1,16 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.sql.Date;
 
 @Entity
 @Table(name = "credit_card", schema = "online_shop", catalog = "")
-public class CreditCard  implements Serializable {
+public class CreditCard {
     private Long id;
     private String creditСardNumber;
     private String cvv;
     private String expiryDate;
     private Long idClient;
-    private Clients clientsByIdClient;
+    private User userByIdClient;
 
     public CreditCard() {
     }
@@ -25,6 +23,7 @@ public class CreditCard  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -43,8 +42,6 @@ public class CreditCard  implements Serializable {
     public void setCreditСardNumber(String creditСardNumber) {
         this.creditСardNumber = creditСardNumber;
     }
-
-
 
     @Basic
     @Column(name = "cvv")
@@ -89,7 +86,8 @@ public class CreditCard  implements Serializable {
         if (cvv != null ? !cvv.equals(card.cvv) : card.cvv != null) return false;
         if (expiryDate != null ? !expiryDate.equals(card.expiryDate) : card.expiryDate != null) return false;
         if (idClient != null ? !idClient.equals(card.idClient) : card.idClient != null) return false;
-        return clientsByIdClient != null ? clientsByIdClient.equals(card.clientsByIdClient) : card.clientsByIdClient == null;
+
+        return true;
     }
 
     @Override
@@ -99,17 +97,16 @@ public class CreditCard  implements Serializable {
         result = 31 * result + (cvv != null ? cvv.hashCode() : 0);
         result = 31 * result + (expiryDate != null ? expiryDate.hashCode() : 0);
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
-        result = 31 * result + (clientsByIdClient != null ? clientsByIdClient.hashCode() : 0);
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
-    public Clients getClientsByIdClient() {
-        return clientsByIdClient;
+    @JoinColumn(name = "id_client", referencedColumnName = "user_id", insertable = false,updatable = false)
+    public User getUserByIdClient() {
+        return userByIdClient;
     }
 
-    public void setClientsByIdClient(Clients clientsByIdClient) {
-        this.clientsByIdClient = clientsByIdClient;
+    public void setUserByIdClient(User userByIdClient) {
+        this.userByIdClient = userByIdClient;
     }
 }

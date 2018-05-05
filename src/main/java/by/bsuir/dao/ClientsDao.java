@@ -1,15 +1,10 @@
 package by.bsuir.dao;
 
-import by.bsuir.model.Clients;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import by.bsuir.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface ClientsDao extends CrudRepository<Clients,Long>  {
-
+public interface ClientsDao extends CrudRepository<User,Long>  {
+    User findByLogin(String login);
 }

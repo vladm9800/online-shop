@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="thymeleaf-extras-springsecurity4"
+      lang="ru">
     <head>
         <meta charset="UTF-8">
         <title>Registration</title>
-        <link rel="icon" href="resources/icon.png" type="image/x-icon">
+        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+
         <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
         <header>
-            <img class="logo_img" src="resources/samsung_logo.png">
-            <a href="index.html"> <img class="login_pic" src="resources/login.ico"> </a>
+            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
+            <div sec:authorize="isAuthenticated()">
+                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login" target="_blank" class="login">Вход в систему</a>
+            </div>
         </header>
         <p class="dp">Добро пожаловать! Зарегистрируйтесь в системе для удобства дальнейших покупок.</p>
+        <form action="#", th:action="@{/registration}" th:object="${user}" method="post">
         <table class="r1">
             <tr class="r2">
                 <th class="r3">
                     <p class="reg1">Логин</p>
                 </th>
                 <th class="r4">
-                    <input type="text"class="reg2" >
+                    <input type="text" th:field="*{login}" class="reg2" >
                 </th>
             </tr>
             <tr class="r2">
@@ -26,7 +35,7 @@
                     <p class="reg1">Пароль</p>
                 </th>
                 <th class="r4">
-                    <input type="text"class="reg2" >
+                    <input type="text" th:field="*{password}" class="reg2" >
                 </th>
             </tr>
             <tr class="r2">
@@ -34,7 +43,7 @@
                     <p class="reg1">Фамилия</p>
                 </th>
                 <th class="r4">
-                    <input type="text"class="reg2" >
+                    <input type="text" th:field="*{surname}" class="reg2" >
                 </th>
             </tr>
             <tr class="r2">
@@ -42,23 +51,16 @@
                     <p class="reg1">Имя</p>
                 </th>
                 <th class="r4">
-                    <input type="text"class="reg2" >
+                    <input type="text" th:field="*{name}" class="reg2" >
                 </th>
             </tr>
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">Отчество</p>
-                </th>
-                <th class="r4">
-                    <input type="text"class="reg2" >
-                </th>
-            </tr>
+
             <tr class="r2">
                 <th class="r3">
                     <p class="reg1">E-mail</p>
                 </th>
                 <th class="r4">
-                    <input type="text"class="reg2" >
+                    <input type="email" th:field="*{email}" class="reg2" >
                 </th>
             </tr>
             <tr class="r2">
@@ -66,7 +68,7 @@
                     <p class="reg1">Дата рождения</p>
                 </th>
                 <th class="r4">
-                    <input type="text"class="reg2" >
+                    <input type="date"class="reg2" >
                 </th>
             </tr>
             <tr class="r2">
@@ -74,26 +76,30 @@
                     <p class="reg1">Домашний адрес</p>
                 </th>
                 <th class="r4">
-                    <input type="text"class="reg2" >
+                    <input type="text" th:field="*{address}" class="reg2" >
                 </th>
             </tr>
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">Мобильный телефон</p>
-                </th>
-                <th class="r4">
-                    <input type="text"class="reg2" >
-                </th>
-            </tr>
+            <!--<tr class="r2">-->
+                <!--<th class="r3">-->
+                    <!--<p class="reg1">Мобильный телефон</p>-->
+                <!--</th>-->
+                <!--<th class="r4">-->
+                    <!--<input type="text"class="reg2" >-->
+                <!--</th>-->
+            <!--</tr>-->
+
         </table>
         <input type="submit" class="reg_but" value="Зарегистрироваться">
+            <span th:utext="${successMessage}"></span>
+        </form>
         <footer class="footer4">
             <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
             <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img src="resources/vk.svg" class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img src="resources/twitter.png" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="resources/facebook.png" class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img src="resources/instagram.png" class="instagram"></a>
+            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+
         </footer>
     </body>
 </html>

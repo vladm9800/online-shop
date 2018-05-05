@@ -1,7 +1,6 @@
 package by.bsuir.service.serviceImpl;
 
 import by.bsuir.dao.OrderDao;
-import by.bsuir.model.DeliveryPlace;
 import by.bsuir.model.Goods;
 import by.bsuir.model.Orders;
 import by.bsuir.service.OrdersService;

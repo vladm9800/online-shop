@@ -1,13 +1,8 @@
 package by.bsuir.model;
 
-import by.bsuir.model.Clients;
-import by.bsuir.model.DeliveryPlace;
-import by.bsuir.model.Goods;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,7 +16,7 @@ public class Orders implements Serializable {
     private String delivery;
     private Long idClient;
     private Long idDeliveryPlace;
-    private Clients clientsByIdClient;
+    private User userByIdClient;
     private DeliveryPlace deliveryPlaceByIdDeliveryPlace;
     private List<Goods> goods;
 
@@ -135,7 +130,7 @@ public class Orders implements Serializable {
         if (idClient != null ? !idClient.equals(orders.idClient) : orders.idClient != null) return false;
         if (idDeliveryPlace != null ? !idDeliveryPlace.equals(orders.idDeliveryPlace) : orders.idDeliveryPlace != null)
             return false;
-        if (clientsByIdClient != null ? !clientsByIdClient.equals(orders.clientsByIdClient) : orders.clientsByIdClient != null)
+        if (userByIdClient != null ? !userByIdClient.equals(orders.userByIdClient) : orders.userByIdClient != null)
             return false;
         if (deliveryPlaceByIdDeliveryPlace != null ? !deliveryPlaceByIdDeliveryPlace.equals(orders.deliveryPlaceByIdDeliveryPlace) : orders.deliveryPlaceByIdDeliveryPlace != null)
             return false;
@@ -153,20 +148,20 @@ public class Orders implements Serializable {
         result = 31 * result + (delivery != null ? delivery.hashCode() : 0);
         result = 31 * result + (idClient != null ? idClient.hashCode() : 0);
         result = 31 * result + (idDeliveryPlace != null ? idDeliveryPlace.hashCode() : 0);
-        result = 31 * result + (clientsByIdClient != null ? clientsByIdClient.hashCode() : 0);
+        result = 31 * result + (userByIdClient != null ? userByIdClient.hashCode() : 0);
         result = 31 * result + (deliveryPlaceByIdDeliveryPlace != null ? deliveryPlaceByIdDeliveryPlace.hashCode() : 0);
         result = 31 * result + (goods != null ? goods.hashCode() : 0);
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
-    public Clients getClientsByIdClient() {
-        return clientsByIdClient;
+    @JoinColumn(name = "id_client", referencedColumnName = "user_id", nullable = false, insertable = false,updatable = false)
+    public User getUserByIdClient() {
+        return userByIdClient;
     }
 
-    public void setClientsByIdClient(Clients clientsByIdClient) {
-        this.clientsByIdClient = clientsByIdClient;
+    public void setUserByIdClient(User userByIdClient) {
+        this.userByIdClient = userByIdClient;
     }
 
 

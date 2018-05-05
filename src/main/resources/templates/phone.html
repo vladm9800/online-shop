@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
     <head>
         <meta charset="UTF-8">
         <title th:text="${phone.nameOfModel}"/>  <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
-        <link rel="icon" href="icon.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     </head>
     <body>
         <header>
-            <img class="logo_img" src="samsung_logo.png">
-            <img class="login_pic" src="login.ico">
+            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
+            <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico"> </a>
+
             <form action="" class="search">
                 <input type="text" placeholder="Поиск в каталоге">
                 <input type="submit" value="Искать">
             </form>
-            <a href="login.html" target="_blank" class="login">Вход в систему</a>
+
+            <div sec:authorize="isAuthenticated()">
+                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login" target="_blank" class="login">Вход в систему</a>
+            </div>
         </header>
             <img class="phone2" th:src="${phone.pict}">
             <!--<img class="phone" src="https://content2.onliner.by/catalog/device/header/939908762a8a37184b9ee967945b17ab.jpeg">-->
@@ -315,10 +322,11 @@
         <footer class="footer2">
             <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
             <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img src="vk.svg" class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img src="twitter.png" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img src="facebook.png" class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img src="instagram.png" class="instagram"></a>
+            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
+            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
+            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
+            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+
         </footer>
     </body>
 </html >

@@ -2,6 +2,7 @@ package by.bsuir.controller;
 
 
 import by.bsuir.dto.CardAndDelivery;
+import by.bsuir.dto.Select;
 import by.bsuir.model.CreditCard;
 import by.bsuir.model.DeliveryPlace;
 import by.bsuir.model.Goods;
@@ -12,35 +13,59 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
 @Controller
+//@SessionAttributes(value = "select")
 public class AuthorizationController {
 
 
-    private ClientsService clientsService;
+    private UserService userService;
     private GoodsService goodsService;
     private CreditCardService cardService;
     private DeliveryPlaceService placeService;
     private OrdersService ordersService;
 
+
+
     @GetMapping(value = "/")
-    public String getPage(Model model) {
+    public String getPage(HttpSession session, Model model) {
         List<Goods> phones = goodsService.getGoods();
         model.addAttribute("phones", phones);
+        Select select = new Select();
+        session.setAttribute("select",select);
         return "index";
     }
-    @GetMapping(value = "/registration")
-    String getRegistration() {
-        return "registration";
+
+    @GetMapping(value = "/select")
+    public  String getSelect(@ModelAttribute Goods phone,@SessionAttribute Select select, HttpSession session, Model model){
+        if(select.getIdPhoneOne()==null){
+            select.setIdPhoneOne(phone.getId());
+            session.setAttribute("select",select);
+        }
+        else {
+            select.setIdPhoneTwo(phone.getId());
+            session.setAttribute("select",select);
+        }
+        List<Goods> phones = goodsService.getGoods();
+        model.addAttribute("phones", phones);
+
+        return "index";
+    }
+    @GetMapping(value = "/comparison")
+    public String getComparison(HttpSession session,Select select,Model model){
+        select= (Select) session.getAttribute("select");
+        Goods phoneOne = goodsService.getGoodsById(select.getIdPhoneOne());
+        Goods phoneTwo= goodsService.getGoodsById(select.getIdPhoneTwo());
+        model.addAttribute("phoneOne",phoneOne);
+        model.addAttribute("phoneTwo",phoneTwo);
+        return "comparison";
     }
 
-    @GetMapping(value = "/login")
-    String getLogin() {
-        return "login";
-    }
+
 
     @PostMapping(value = "/phone")
     public String getPhone(@ModelAttribute Goods phone, Model model) {
@@ -94,8 +119,8 @@ public class AuthorizationController {
     }
 
     @Autowired
-    public void setClientsService(ClientsService clientsService) {
-        this.clientsService = clientsService;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @Autowired
