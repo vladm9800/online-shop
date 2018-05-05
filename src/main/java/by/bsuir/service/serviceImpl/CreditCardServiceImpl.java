@@ -14,7 +14,8 @@ public class CreditCardServiceImpl implements CreditCardService {
 
     @Override
     @Transactional
-    public void save(CreditCard card) {
+    public void save(CreditCard card,Long userId) {
+        card.setIdClient(userId);
         cardDao.save(card);
 
     }

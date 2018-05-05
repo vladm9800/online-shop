@@ -11,16 +11,18 @@ public class CardAndDelivery {
 
 
 
+
+
     public CardAndDelivery() {
     }
 
-    public CardAndDelivery(String creditСardNumber, String cvv, String expiryDate, String city, String address, String phoneNumberDeliv, Long idPhone) {
-        this.creditСardNumber = creditСardNumber;
-        this.cvv = cvv;
-        this.expiryDate = expiryDate;
+    public CardAndDelivery(String city, String address, String phoneNumberDeliv, String creditСardNumber, String cvv, String expiryDate) {
         this.city = city;
         this.address = address;
         this.phoneNumberDeliv = phoneNumberDeliv;
+        this.creditСardNumber = creditСardNumber;
+        this.cvv = cvv;
+        this.expiryDate = expiryDate;
 
     }
 

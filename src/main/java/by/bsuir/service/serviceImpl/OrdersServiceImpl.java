@@ -14,7 +14,7 @@ public class OrdersServiceImpl implements OrdersService {
 
     private OrderDao orderDao;
 
-    public void addOrder(Goods phone, String date,String time,Long idplace){
+    public void addOrder(Goods phone, String date,String time,Long idplace,Long userId){
         Orders orders = new Orders();
         orders.setGoods(new ArrayList<>());
         orders.getGoods().add(phone);
@@ -22,6 +22,7 @@ public class OrdersServiceImpl implements OrdersService {
         orders.setTimeOfOrder(time);
         orders.setOrderCost(phone.getCost());
         orders.setIdDeliveryPlace(idplace);
+        orders.setIdClient(userId);
         orderDao.save(orders);
     }
 

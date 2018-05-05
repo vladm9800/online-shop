@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/logo-nav.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="sticky-footer.css" rel="stylesheet"></head>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
+        <div class="container">
+            <a class="navbar-brand" >
+                <img src="resources/samsung_logo.png" width="150" height="30" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<body>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Login</th>
+
+        <th scope="col">Email</th>
+        <th scope="col">active</th>
+        <th scope="col">surname</th>
+        <th scope="col">name</th>
+        <th scope="col">date_of_brth</th>
+        <th scope="col">Delete</th>
+
+    </tr>
+    </thead>
+    <tbody >
+    <div th:each="user : ${users}">
+    <tr >
+        <th scope="row" th:text="${user.userId}">1</th>
+        <td th:text="${user.login}">Mark</td>
+
+        <td th:text="${user.email}">@mdo</td>
+        <td th:text="${user.active}">@mdo</td>
+
+        <td th:text="${user.surname}">@mdo</td>
+        <td th:text="${user.name}">@mdo</td>
+        <td th:text="${user.dateOfBrth}">@mdo</td>
+        <form action="#" th:action="@{/admin/manageUsers/delete}" th:field="${user}" method="post">
+            <td >
+                <input type="hidden" th:value="${user.userId}" name="userId" />
+                <input type="submit" value="Удалить" class="btn btn-primary btn-sm" />
+            </td>
+        </form>
+    </tr>
+    </div>
+    </tbody>
+</table>
+
+</body>
+</html>

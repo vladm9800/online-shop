@@ -1,10 +1,11 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Role {
+public class Role implements Serializable {
     private Long roleId;
     private String role;
 

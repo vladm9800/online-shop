@@ -1,10 +1,11 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "credit_card", schema = "online_shop", catalog = "")
-public class CreditCard {
+public class CreditCard implements Serializable {
     private Long id;
     private String creditСardNumber;
     private String cvv;

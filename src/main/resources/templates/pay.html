@@ -39,13 +39,14 @@
         <p class="pol2">___________________________________</p>
         <div class="choice">
                 <p class="reg3">Номер карты</p>
-                <input type="text" th:field="*{creditСardNumber}" maxlength="16"class="reg4" placeholder="xxxx xxxx xxxx xxxx" required>
+                <input type="text" th:field="*{creditСardNumber}" maxlength="16"class="reg4" placeholder=" xxxx xxxx xxxx xxxx" required>
                 <p class="reg3"> CVV</p>
-                <input type="text" th:field="*{cvv}" class="reg4"  maxlength="3" placeholder="xxx" required>
+                <input type="text" th:field="*{cvv}" class="reg4"  maxlength="3" placeholder=" xxx" required>
                 <p class="reg3"> Дата</p>
                 <input type="month" th:field="*{expiryDate}" class="reg4"   required>
 
         </div>
+
         <input type="hidden" th:value="${phone.id}" name="id" />
         <input type="submit" class="pay" value="Оплатить">
         </form>

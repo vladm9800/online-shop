@@ -1,13 +1,14 @@
 package by.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Serializable {
     private Long userId;
     private String login;
     private String password;
@@ -15,7 +16,6 @@ public class User {
     private String email;
     private String surname;
     private String name;
-    private String address;
     private Date dateOfBrth;
     private List<CreditCard> creditCardsByUserId;
     private List<Orders> ordersByUserId;
@@ -82,15 +82,7 @@ public class User {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "address")
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     @Basic
     @Column(name = "date_of_brth")
@@ -126,7 +118,6 @@ public class User {
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (address != null ? !address.equals(user.address) : user.address != null) return false;
         if (dateOfBrth != null ? !dateOfBrth.equals(user.dateOfBrth) : user.dateOfBrth != null) return false;
         if (creditCardsByUserId != null ? !creditCardsByUserId.equals(user.creditCardsByUserId) : user.creditCardsByUserId != null)
             return false;
@@ -144,7 +135,6 @@ public class User {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (dateOfBrth != null ? dateOfBrth.hashCode() : 0);
         result = 31 * result + (creditCardsByUserId != null ? creditCardsByUserId.hashCode() : 0);
         result = 31 * result + (ordersByUserId != null ? ordersByUserId.hashCode() : 0);

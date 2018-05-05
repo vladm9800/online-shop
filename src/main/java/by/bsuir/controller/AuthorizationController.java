@@ -6,8 +6,12 @@ import by.bsuir.dto.Select;
 import by.bsuir.model.CreditCard;
 import by.bsuir.model.DeliveryPlace;
 import by.bsuir.model.Goods;
+
 import by.bsuir.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -86,16 +90,18 @@ public class AuthorizationController {
 
 
     @PostMapping(value = "/accept")
-    public String getAccept(@ModelAttribute Goods phone,@ModelAttribute CardAndDelivery cAd,Model model ){
+    public String getAccept(@AuthenticationPrincipal User user, @ModelAttribute Goods phone, @ModelAttribute CardAndDelivery cAd, Model model ){
         Goods goods = goodsService.getGoodsById(phone.getId());
         DeliveryPlace place = new DeliveryPlace(cAd.getCity(),cAd.getAddress(),cAd.getPhoneNumberDeliv());
         CreditCard cards = new CreditCard(cAd.getCreditСardNumber(),cAd.getCvv(),cAd.getExpiryDate());
         String date = new SimpleDateFormat("yyyy.MM.dd").format(Calendar.getInstance().getTime());
         String time = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+        by.bsuir.model.User user1 = userService.findUserByLogin(user.getUsername());
+
         placeService.save(place);
 
-        ordersService.addOrder(goods,date,time, place.getId());
-        cardService.save(cards);
+        ordersService.addOrder(goods,date,time, place.getId(),user1.getUserId());
+        cardService.save(cards,user1.getUserId());
 
         List<Goods> phones = goodsService.getGoods();
         model.addAttribute("phones", phones);

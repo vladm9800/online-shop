@@ -27,6 +27,8 @@
                     <p class="reg1">Логин</p>
                 </th>
                 <th class="r4">
+                    <label th:if="${#fields.hasErrors('login')}" th:errors="*{login}"
+                           class="validation-message"></label>
                     <input type="text" th:field="*{login}" class="reg2" >
                 </th>
             </tr>
@@ -36,6 +38,9 @@
                 </th>
                 <th class="r4">
                     <input type="text" th:field="*{password}" class="reg2" >
+                    <label
+                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                            class="validation-message"></label>
                 </th>
             </tr>
             <tr class="r2">
@@ -43,6 +48,8 @@
                     <p class="reg1">Фамилия</p>
                 </th>
                 <th class="r4">
+                    <label	th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
+                              class="validation-message"></label>
                     <input type="text" th:field="*{surname}" class="reg2" >
                 </th>
             </tr>
@@ -51,6 +58,8 @@
                     <p class="reg1">Имя</p>
                 </th>
                 <th class="r4">
+                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                           class="validation-message"></label>
                     <input type="text" th:field="*{name}" class="reg2" >
                 </th>
             </tr>
@@ -61,24 +70,20 @@
                 </th>
                 <th class="r4">
                     <input type="email" th:field="*{email}" class="reg2" >
+                    <label
+                            th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                            class="validation-message"></label>
                 </th>
             </tr>
             <tr class="r2">
                 <th class="r3">
-                    <p class="reg1">Дата рождения</p>
+                    <p class="reg1" >Дата рождения</p>
                 </th>
                 <th class="r4">
-                    <input type="date"class="reg2" >
+                    <input type="date"th:field="*{dateOfBrth}" class="reg2" >
                 </th>
             </tr>
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">Домашний адрес</p>
-                </th>
-                <th class="r4">
-                    <input type="text" th:field="*{address}" class="reg2" >
-                </th>
-            </tr>
+
             <!--<tr class="r2">-->
                 <!--<th class="r3">-->
                     <!--<p class="reg1">Мобильный телефон</p>-->

@@ -1,6 +1,6 @@
 package by.bsuir.service.serviceImpl;
 
-import by.bsuir.dao.ClientsDao;
+import by.bsuir.dao.UserDao;
 
 import by.bsuir.dao.RoleDao;
 import by.bsuir.model.User;
@@ -21,7 +21,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private RoleDao roleDao;
-    private ClientsDao clientsDao;
+    private UserDao userDao;
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -29,64 +29,36 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByLogin(String login) {
-        return clientsDao.findByLogin(login);
+        return userDao.findByLogin(login);
     }
 
     @Override
     @Transactional
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Role userRole = roleDao.findByRole("ADMIN");
+        Role userRole = roleDao.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-        clientsDao.save(user);
+        user.setActive(1);
+        userDao.save(user);
     }
-
-    @Override
-    @Transactional
-    public void createClient(User user) {
-        user.setPassword( user.getPassword());
-        clientsDao.save(user);
-    }
-
-    @Override
-    @Transactional
-    public void updateClient(User user) {
-
-     User user1 =   clientsDao.findById(user.getUserId()).get();
-     user1.setName(user.getName());
-     user1.setSurname(user.getSurname());
-
-     user1.setEmail(user.getEmail());
-     user1.setAddress(user.getAddress());
-     user1.setDateOfBrth(user.getDateOfBrth());
-
-
-    }
-//    @Override
-//    @Transactional
-//    public User getClientByLogin(String login) {
-//
-//        return clientsDao.findClientsByLogin(login);
-//
-//    }
 
 
     @Override
     @Transactional
     public List<User> getAll() {
 
-        return (List<User>)clientsDao.findAll();
+        return (List<User>) userDao.findAll();
     }
 
     @Override
     @Transactional
     public void deleteCliens(User user) {
 
-        clientsDao.delete(user);
+        userDao.delete(user);
     }
     @Autowired
-    public void setClientsDao(ClientsDao clientsDao) {
-        this.clientsDao = clientsDao;
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
     @Autowired
     public void setRoleDao(RoleDao roleDao) {
