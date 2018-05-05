@@ -478,7 +478,7 @@ public class Goods implements Serializable {
         return result;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "order_goods",
             joinColumns = {@JoinColumn(name = "id_goods")},
             inverseJoinColumns = {@JoinColumn(name = "id_order")})

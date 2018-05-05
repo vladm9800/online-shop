@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
+<html  xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="css/logo-nav.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="sticky-footer.css" rel="stylesheet"></head>
+</head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
         <div class="container">
@@ -37,32 +38,46 @@
     </nav>
 </header>
 <body>
-<h1 class="mt-5 text-center">Добро пожаловать </h1>
-<p></p>
-<div class="container">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Товар</th>
+        <th scope="col">Дата заказа</th>
+        <th scope="col">Время заказа</th>
+        <th scope="col">Статус заказа</th>
+        <th scope="col">Стоимость заказа</th>
+        <th scope="col">Оплата</th>
+        <th scope="col">Доставка</th>
+        <th scope="col">id клиента</th>
+        <th scope="col">id места достаки</th>
 
+    </tr>
+    </thead>
+    <tbody >
+    <div th:each="order : ${orders}">
+        <tr >
+            <th scope="row" th:text="${order.id}">1</th>
+            <td  th:each="goods:${order.goods}" th:text="${goods.nameOfModel}">Mark</td>
+            <td th:text="${order.orderDate}">Mark</td>
+            <td th:text="${order.timeOfOrder}">@mdo</td>
+            <td th:text="${order.orderStatus}">@mdo</td>
+            <td th:text="${order.orderCost}">@mdo</td>
+            <td th:text="${order.payment}">@mdo</td>
+            <td th:text="${order.delivery}">@mdo</td>
+            <td th:text="${order.idClient}">@mdo</td>
+            <td th:text="${order.idDeliveryPlace}">@mdo</td>
 
-    <form action="#" th:action="@{/admin/manageUsers}" method="post">
-        <div class="card bg-white rounded shadow-sm border-info mb-3 text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <input type="submit" value="Перейти" class="btn btn-primary btn-sm" />
-            </div>
-        </div>
-    </form>
+            <form action="#" th:action="@{/admin/manageOrders/delete}" th:field="${order}" method="post">
+                <td >
+                    <input type="hidden" th:value="${order.id}" name="id" />
+                    <input type="submit" value="Удалить" class="btn btn-primary btn-sm" />
+                </td>
+            </form>
+        </tr>
+    </div>
+    </tbody>
+</table>
 
-    <form action="#" th:action="@{/admin/manageOrders}" method="post">
-        <div class="card  bg-white rounded shadow-sm mb-3 border-info text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <input type="submit" value="Перейти" class="btn btn-primary btn-sm" />
-            </div>
-        </div>
-    </form>
-
-</div>
 </body>
-
 </html>

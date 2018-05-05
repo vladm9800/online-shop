@@ -176,7 +176,7 @@ public class Orders implements Serializable {
         this.deliveryPlaceByIdDeliveryPlace = deliveryPlaceByIdDeliveryPlace;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "order_goods",
             joinColumns = {@JoinColumn(name = "id_order")},
             inverseJoinColumns = {@JoinColumn(name = "id_goods")})
