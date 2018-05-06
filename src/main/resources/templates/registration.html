@@ -1,110 +1,138 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="thymeleaf-extras-springsecurity4"
-      lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>Registration</title>
-        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
-        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Registration Form</title>
+	<link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+	<!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
-        <link rel="stylesheet" href="style.css" type="text/css">
-    </head>
-    <body>
-        <header>
-            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
-            <div sec:authorize="isAuthenticated()">
-                <a  th:href="@{/logout}" target="_self"  class="login">Выход</a>
-            </div>
-            <div sec:authorize="!isAuthenticated()">
-                <a href="/login" target="_blank" class="login">Вход в систему</a>
-            </div>
-        </header>
-        <p class="dp">Добро пожаловать! Зарегистрируйтесь в системе для удобства дальнейших покупок.</p>
-        <form action="#", th:action="@{/registration}" th:object="${user}" method="post">
-        <table class="r1">
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">Логин</p>
-                </th>
-                <th class="r4">
-                    <label th:if="${#fields.hasErrors('login')}" th:errors="*{login}"
-                           class="validation-message"></label>
-                    <input type="text" th:field="*{login}" class="reg2" >
-                </th>
-            </tr>
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">Пароль</p>
-                </th>
-                <th class="r4">
-                    <input type="text" th:field="*{password}" class="reg2" >
-                    <label
-                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                            class="validation-message"></label>
-                </th>
-            </tr>
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">Фамилия</p>
-                </th>
-                <th class="r4">
-                    <label	th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
-                              class="validation-message"></label>
-                    <input type="text" th:field="*{surname}" class="reg2" >
-                </th>
-            </tr>
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">Имя</p>
-                </th>
-                <th class="r4">
-                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-                           class="validation-message"></label>
-                    <input type="text" th:field="*{name}" class="reg2" >
-                </th>
-            </tr>
+	<!-- Custom styles for this template -->
+	<link href="css/logo-nav.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<!--<link href="sticky-footer.css" rel="stylesheet">-->
+  	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+  	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+</head>
+<header>
+	<nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
+		<div class="container">
+			<a class="navbar-brand" >
+				<img th:src="@{images/samsung_logo.png}" width="150" height="30" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Services</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<body>
+	<form th:action="@{/login}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
+	</form>	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form autocomplete="off" action="#" th:action="@{/registration}"
+					th:object="${user}" method="post" class="form-horizontal"
+					role="form">
+					<h2>Registration Form</h2>
 
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1">E-mail</p>
-                </th>
-                <th class="r4">
-                    <input type="email" th:field="*{email}" class="reg2" >
-                    <label
-                            th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                            class="validation-message"></label>
-                </th>
-            </tr>
-            <tr class="r2">
-                <th class="r3">
-                    <p class="reg1" >Дата рождения</p>
-                </th>
-                <th class="r4">
-                    <input type="date"th:field="*{dateOfBrth}" class="reg2" >
-                </th>
-            </tr>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label th:if="${#fields.hasErrors('login')}" th:errors="*{login}"
+								   class="validation-message"></label>
+							<input type="text" th:field="*{login}" placeholder="Логин"
+								   class="form-control" required />
+						</div>
+					</div>
 
-            <!--<tr class="r2">-->
-                <!--<th class="r3">-->
-                    <!--<p class="reg1">Мобильный телефон</p>-->
-                <!--</th>-->
-                <!--<th class="r4">-->
-                    <!--<input type="text"class="reg2" >-->
-                <!--</th>-->
-            <!--</tr>-->
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="password" th:field="*{password}"
+								   placeholder="Password" class="form-control" required /> <label
+								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+								class="validation-message"></label>
+						</div>
+					</div>
 
-        </table>
-        <input type="submit" class="reg_but" value="Зарегистрироваться">
-            <span th:utext="${successMessage}"></span>
-        </form>
-        <footer class="footer4">
-            <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
-            <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
+					<div class="form-group">
+						<div class="col-sm-9">
+						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="validation-message"></label>
+						<input type="text" th:field="*{name}" placeholder="Имя"
+								class="form-control" required/>
+						</div>
+					</div>
 
-        </footer>
-    </body>
+					<div class="form-group">
+						<div class="col-sm-9">
+						<label	th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
+								class="validation-message"></label>
+							<input type="password" th:field="*{surname}"
+								placeholder="Фамиоия" class="form-control" required/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="email" th:field="*{email}" placeholder="Email"
+								   class="form-control" required/> <label
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+								class="validation-message"></label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="date" th:field="*{dateOfBrth}" placeholder="Дата рождения"
+								class="form-control" required /> <label
+								th:if="${#fields.hasErrors('dateOfBrth')}" th:errors="*{dateOfBrth}"
+								class="validation-message"></label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<button type="submit" class="btn btn-primary btn-block">Register User</button>
+						</div>
+					</div>
+
+					<span th:utext="${successMessage}"></span>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="text" th:field="*{address}" placeholder="Адрес"
+								   class="form-control" required /> <label
+								th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+								class="validation-message"></label>
+						</div>
+					</div>
+
+
+					
+					
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>

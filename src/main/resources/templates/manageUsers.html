@@ -2,7 +2,8 @@
 <html  xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Manage Users</title>
+    <link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
     <link href="css/logo-nav.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="sticky-footer.css" rel="stylesheet"></head>
@@ -68,7 +69,13 @@
         <form action="#" th:action="@{/admin/manageUsers/delete}" th:field="${user}" method="post">
             <td >
                 <input type="hidden" th:value="${user.userId}" name="userId" />
-                <input type="submit" value="Удалить" class="btn btn-primary btn-sm" />
+                <input type="submit" value="Удалить" class="btn btn-outline-primary" />
+            </td>
+        </form>
+        <form action="#" th:action="@{/admin/manageUsers/ban}" th:field="${user}" method="post">
+            <td >
+                <input type="hidden" th:value="${user.login}" name="login" />
+                <input type="submit" value="Active/inactive" class="btn btn-outline-primary" />
             </td>
         </form>
     </tr>

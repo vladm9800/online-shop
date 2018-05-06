@@ -11,6 +11,7 @@ public interface UserService {
     void deleteCliens(User user);
     List<User> getAll();
     User findUserByLogin(String login);
-     void saveUser(User user);
+    void saveUser(User user);
+    void changeStaus(User user );
 
 }

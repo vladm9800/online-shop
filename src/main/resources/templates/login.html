@@ -1,40 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ru">
-    <head>
-            <meta charset="UTF-8">
-            <title>Login</title>
-            <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
-            <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
-        </head>
-        <body>
-        <header>
-            <img class="logo_img" th:src="@{/images/samsung_logo.png}">
-            <a href="index.html"> <img class="login_pic" th:src="@{/images/login.ico}" src="login.ico"> </a>
-        </header>
-        <div id="wrapper">
-            <form action=""  th:action="@{/login}" th:object="${user}" name="login-form" class="login-form" method="post">
-                <div class="header">
-                    <h1>Авторизация</h1>
-                    <span>Введите ваши регистрационные данные для входа в личный кабинет. Если вы не зарегистрированы, то нажмите "регистрация".</span>
-                </div>
-                <div class="content">
-                    <input id="login" name="login" type="text" class="input username"  value="Логин" onfocus="this.value=''" />
-                    <input id="password" name="password" type="password" class="input password"  value="Пароль" onfocus="this.value=''" />
-                </div>
-                <div class="footer">
-                    <input type="submit" name="submit" value="Войти" class="button" />
-                    <!--<input type="submit" name="submit" value="Регистрация" class="register" />-->
-                    <a href="/registration" target="_blank" class="register">Регистрация</a>
-                </div>
-            </form>
-        </div>
-        <footer class="footer3">
-            <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
-            <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-            <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
-            <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
-            <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
-            <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
-        </footer>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Spring Security Tutorial</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+	<link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
+	<!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+	<!-- Custom styles for this template -->
+	<link href="css/logo-nav.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+  	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+  	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+</head>
+<header>
+	<nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
+		<div class="container">
+			<a class="navbar-brand" >
+				<img th:src="@{images/samsung_logo.png}" width="150" height="30" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Services</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<body>
+	<form th:action="@{/registration}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
+	</form>	
+	
+	<div class="container">
+
+		<form action="#" th:action="@{/login}"   method="post" class="form-signin">
+			<h3 class="form-signin-heading" th:text="Welcome"></h3>
+			<br/>
+			 
+			<input type="text" id="login" name="login"  th:placeholder="login"
+				class="form-control" /> <br/> 
+			<input type="password"  th:placeholder="Password"
+				id="password" name="password" class="form-control" /> <br /> 
+				
+			<div align="center" th:if="${param.error}">
+				<p style="font-size: 20px; color: #FF1C19;">Логин или Пароль недействительны, пожалуйста, проверьте введенные данные</p>
+			</div>
+			<!--<input type="submit" name="submit" value="Войти" class="button">-->
+			<button class="btn btn-lg btn-primary btn-block" name="submit" value="Login" type="submit" th:text="Вход"></button>
+		</form>
+
+
+	</div>
+</body>
 </html>

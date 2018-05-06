@@ -23,8 +23,7 @@ import java.util.Calendar;
 import java.util.List;
 
 @Controller
-//@SessionAttributes(value = "select")
-public class AuthorizationController {
+public class MainController {
 
 
     private UserService userService;
@@ -39,8 +38,8 @@ public class AuthorizationController {
     public String getPage(HttpSession session, Model model) {
         List<Goods> phones = goodsService.getGoods();
         model.addAttribute("phones", phones);
-        Select select = new Select();
-        session.setAttribute("select",select);
+
+        session.setAttribute("select",new Select());
         return "index";
     }
 
@@ -108,6 +107,14 @@ public class AuthorizationController {
 
         return "index";
     }
+    @GetMapping(value = "/clear")
+    public String getClear(HttpSession session, Model model) {
+        List<Goods> phones = goodsService.getGoods();
+        model.addAttribute("phones", phones);
+        session.setAttribute("select", new Select());
+        return "index";
+    }
+
 
     @Autowired
     public void setOrdersService(OrdersService ordersService) {

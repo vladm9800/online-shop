@@ -41,7 +41,11 @@ public class UserServiceImpl implements UserService {
         user.setActive(1);
         userDao.save(user);
     }
-
+    @Override
+    @Transactional
+    public void changeStaus(User user ){
+        userDao.save(user);
+    }
 
     @Override
     @Transactional

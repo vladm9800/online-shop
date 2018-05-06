@@ -20,22 +20,38 @@ public class AdminController {
     private OrdersService ordersService;
 
     @GetMapping(value = "/admin")
-    String getAdmin(){
+    public String getAdmin(){
         return "admin";
     }
 
     @PostMapping(value = "/admin/manageUsers")
-    String getUsers(Model model){
+    public String getUsers(Model model){
         List<User> user =  userService.getAll();
         model.addAttribute("users",user);
         return "manageUsers";
     }
 
     @PostMapping(value = "/admin/manageUsers/delete")
-    String deleteUsers(@ModelAttribute User user,Model model){
+    public String deleteUsers(@ModelAttribute User user,Model model){
         userService.deleteCliens(user);
         List<User> user1 =  userService.getAll();
         model.addAttribute("users",user1);
+        return "manageUsers";
+    }
+    @PostMapping(value="/admin/manageUsers/ban")
+    public String getBan(@ModelAttribute User user,Model model){
+        User user1= userService.findUserByLogin(user.getLogin());
+        if(user1.getActive()==1){
+            user1.setActive(0);}
+
+        else {
+            user1.setActive(1);
+
+        }
+        userService.changeStaus(user1);
+
+        List<User> user2 =  userService.getAll();
+        model.addAttribute("users",user2);
         return "manageUsers";
     }
 
@@ -54,6 +70,12 @@ public class AdminController {
         model.addAttribute("orders",orders);
         return "manageOrders";
     }
+    @GetMapping(value = "/error")
+    public String getError(){
+        return "error";
+    }
+
+
     @Autowired
     public void setOrdersService(OrdersService ordersService) {
         this.ordersService = ordersService;

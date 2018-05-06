@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title th:text="${phone.nameOfModel}"/>  <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
-        <link rel="icon" th:href="@{/images/icon.png}" href="icon.png" type="image/x-icon">
+        <link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
 
         <link href="css/logo-nav.css" rel="stylesheet">
         <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
@@ -46,7 +46,7 @@
             <img class="phone2" th:src="${phone.pict}">
             <!--<img class="phone" src="https://content2.onliner.by/catalog/device/header/939908762a8a37184b9ee967945b17ab.jpeg">-->
             <p class="cl1" th:text="${phone.nameOfModel}"></p> <!--ПОДТЯНУТЬ НАЗВАНИЕ ИЗ БД-->
-            <p class="op1">Главные характеристики из БД</p>
+            <p th:inline="text" class="op1"> [[${phone.os}]], Экран [[${phone.screenTechnology}]], [[${phone.cpu}]], ОЗУ [[${phone.ram}]], флэш-память [[${phone.flashMemory}]],<br> камера [[${phone.mp}]] Мп, аккумулятор [[${phone.batteryCapacity}]] мА·ч </p>
             <p class="price1" th:inline="text" >[[${phone.cost}]] р.</p> <!--ПОДТЯНУТЬ ЦЕНУ ИЗ БД-->
 
         <form action="#" th:action="pay" th:field="${phone}" method="post">

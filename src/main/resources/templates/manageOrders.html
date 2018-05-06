@@ -2,7 +2,8 @@
 <html  xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Manage Orders</title>
+    <link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
     <link href="css/logo-nav.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="sticky-footer.css" rel="stylesheet"></head>
@@ -71,7 +72,7 @@
             <form action="#" th:action="@{/admin/manageOrders/delete}" th:field="${order}" method="post">
                 <td >
                     <input type="hidden" th:value="${order.id}" name="id" />
-                    <input type="submit" value="Удалить" class="btn btn-primary btn-sm" />
+                    <input type="submit" value="Удалить" class="btn btn-outline-primary" />
                 </td>
             </form>
         </tr>
