@@ -46,10 +46,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.
                 authorizeRequests()
-                .antMatchers("/","/select","/comparison","/phone","/clear").permitAll()
+                .antMatchers("/","/select","/comparison","/phone","/clear","/about").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration","/accept").permitAll()
-                .antMatchers("/pay").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/pay","/accept").hasAnyAuthority("USER","ADMIN")
                 .antMatchers("/admin").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated().and().csrf().disable().formLogin()

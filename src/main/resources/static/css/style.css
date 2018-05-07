@@ -188,7 +188,7 @@ th, td {
 .pay {
     position: absolute;
     top: 285px;
-    right: 170px;
+    right: 130px;
     height: 50px;
     width: 120px;
     font-size: 20px;
@@ -545,7 +545,7 @@ th, td {
 .price2 {
     position: absolute;
     top: 190px;
-    right: 90px;
+    right: 70px;
     font-size: 40px;
     font-weight: bold;
     color: black;
@@ -717,4 +717,22 @@ th, td {
     position: fixed;
     right: 20px;
     top: 120px;
+}.qaz {
+     position: absolute;
+     top: 60px;
+     left: 250px;
+ }
+
+.footer7 {
+    position: relative;
+    top: 530px;
+    width: 100%;
+    height: 70px;
+    background-color: #bee4ed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-top: 3px solid #F5F5F5;*/
+    /*overflow: hidden;*/
 }

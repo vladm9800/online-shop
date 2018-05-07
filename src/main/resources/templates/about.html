@@ -2,14 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="thymeleaf-extras-springsecurity4" lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Samsung online-shop</title>
-        <link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
-
-        <link href="css/logo-nav.css" rel="stylesheet">
+        <title>О нас</title>
         <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+        <link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
+        <link href="css/logo-nav.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-
     </head>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
@@ -42,67 +39,50 @@
         </nav>
     </header>
 
-<body>
+    <body>
 
-<div class="fixed-bottom">
-<div class="float-right">
-    <div class="btn-group" role="group">
-    <form action="#" th:action="comparison"  method="get">
+    <div  class="qaz">
 
-        <input type="submit" value="Сравнить" class="btn btn-outline-primary " />
+    <h1>О нас</h1>
 
-    </form>
-    <form action="#" th:action="@{/clear}"  method="get">
+    <a>
+        По вопросам, касающимся работы ресурса, вы можете обратиться по адресу samsung.online-shop@gmail.com.<br><br>
 
-        <input type="submit" value="Очистить" class="btn btn-outline-info " />
-    </form>
-    </div>
-</div>
-</div>
-    <div class="container">
+        <h6>Реквизиты и юридический адрес:</h6><br>
 
-        <div class="card-deck ">
-            <div th:each="phone : ${phones}">
+        ООО «SAMSUNG» (Общество с ограниченной ответственностью «SAMSUNG»)<br><br>
 
-                <div class="card,shadow-lg p-3 mb-5 bg-white rounded  text-center" >
-                    <img class="card-img-top" th:src="${phone.pict}" style="height:250px;width:200px;  " alt="Card image cap">
-                    <div class="card-body grow">
-                        <h5 class="card-title" th:text="${phone.nameOfModel}"/>
-                        <p class="card-text" th:inline="text"> [[${phone.cost}]] р.</p>
-                        <form action="#" th:action="phone" th:field="${phone}" method="post">
-                            <input type="hidden" th:value="${phone.id}" name="id" />
-                            <input type="submit" value="Подробнее" class="btn btn-outline-primary" />
-                        </form>
-                        <form action="#" th:action="select" th:field="${phone}" method="get">
-                            <input type="hidden" th:value="${phone.id}" name="id" />
-                            <input type="submit" value="В сравнение" class="btn btn-primary btn-sm" />
-                        </form>
-                        <!--<a th:href="@{/phone(id=${phone.id})}" class="btn btn-primary">Go somewhere</a>-->
-                    </div>
+        220036, г. Минск, пр. Дзержинского, 95<br>
+        УНН 92660264<br>
+        ОКПО 92658384<br>
+        Р/сч BY40TECN30530648725866294617 в ОАО «Беларусбанк», г. Минск, ул. Платонова, д.39<br><br>
 
+        Директора Мажанов Владислав Александрович, Задорожнюк Юлия Артуровна<br><br>
 
-                </div>
-            </div>
-        </div>
+        E-mail: samsung.online-shop@gmail.com<br>
+
+        http://www.samsung.online-shop.by<br>
+
+        +375 (29) 759-26-48<br><br>
+
+        Информация об ограничениях. Любое использование фото и текста, в том числе перепечатка <br>
+        целиком и частично), запрещено без разрешения редакции. samsung.online-shop@gmail.com<br>
+    </a>
 
     </div>
 
 
 
+    </body>
 
-
-
-
-
-</body>
-    <footer class="footer1">
-
+    <footer class="footer7">
         <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
         <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
         <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
         <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
         <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
         <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
-
     </footer>
+
 </html>
+

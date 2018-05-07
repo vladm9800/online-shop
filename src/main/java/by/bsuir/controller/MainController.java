@@ -45,6 +45,7 @@ public class MainController {
 
     @GetMapping(value = "/select")
     public  String getSelect(@ModelAttribute Goods phone,@SessionAttribute Select select, HttpSession session, Model model){
+
         if(select.getIdPhoneOne()==null){
             select.setIdPhoneOne(phone.getId());
             session.setAttribute("select",select);
@@ -60,12 +61,20 @@ public class MainController {
     }
     @GetMapping(value = "/comparison")
     public String getComparison(HttpSession session,Select select,Model model){
-        select= (Select) session.getAttribute("select");
-        Goods phoneOne = goodsService.getGoodsById(select.getIdPhoneOne());
-        Goods phoneTwo= goodsService.getGoodsById(select.getIdPhoneTwo());
-        model.addAttribute("phoneOne",phoneOne);
-        model.addAttribute("phoneTwo",phoneTwo);
-        return "comparison";
+        select = (Select) session.getAttribute("select");
+        if(select.getIdPhoneOne()==null||select.getIdPhoneTwo()==null){
+            List<Goods> phones = goodsService.getGoods();
+            model.addAttribute("phones", phones);
+            return "index";
+        }
+        else {
+
+            Goods phoneOne = goodsService.getGoodsById(select.getIdPhoneOne());
+            Goods phoneTwo = goodsService.getGoodsById(select.getIdPhoneTwo());
+            model.addAttribute("phoneOne", phoneOne);
+            model.addAttribute("phoneTwo", phoneTwo);
+            return "comparison";
+        }
     }
 
 
@@ -112,6 +121,10 @@ public class MainController {
         model.addAttribute("phones", phones);
         session.setAttribute("select", new Select());
         return "index";
+    }
+    @GetMapping(value = "/about")
+    public String getAbout(){
+        return "about";
     }
 
 
