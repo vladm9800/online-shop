@@ -10,10 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.List;
 
 @Controller
+
 public class AdminController {
 
     private UserService userService;
@@ -66,6 +68,14 @@ public class AdminController {
     @PostMapping(value = "/admin/manageOrders/delete")
     String deleteOrders(@ModelAttribute Orders order,Model model){
        ordersService.deleteOrder(order);
+        List<Orders> orders =  ordersService.getAll();
+        model.addAttribute("orders",orders);
+        return "manageOrders";
+    }
+    @PostMapping(value = "/admin/manageOrders/changeStatus")
+    String changeStatus(@ModelAttribute Orders order,Model model){
+
+        ordersService.changeStatus(order);
         List<Orders> orders =  ordersService.getAll();
         model.addAttribute("orders",orders);
         return "manageOrders";

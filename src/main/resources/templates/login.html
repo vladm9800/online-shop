@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:sec="thymeleaf-extras-springsecurity4"
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<title>Spring Security Tutorial</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
 	<link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
-	<!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
 
 	<!-- Custom styles for this template -->
 	<link href="css/logo-nav.css" rel="stylesheet">
@@ -19,7 +20,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
 		<div class="container">
 			<a class="navbar-brand" >
-				<img th:src="@{images/samsung_logo.png}" width="150" height="30" alt="">
+				<img th:src="@{/images/samsung_logo.png}" width="150" height="30" alt="">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -27,38 +28,39 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home
+						<a class="nav-link" th:href="@{/}">Главная
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About</a>
+						<a class="nav-link" href="#">О нас</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Services</a>
+					<li sec:authorize="isAuthenticated()"class="nav-item">
+						<a class="nav-link" th:href="@{/logout}">Выход</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
+					<li sec:authorize="!isAuthenticated()"class="nav-item">
+						<a class="nav-link" th:href="@{/login}">Вход</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 </header>
+
 <body>
 	<form th:action="@{/registration}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Регистрация</button>
 	</form>	
 	
 	<div class="container">
 
 		<form action="#" th:action="@{/login}"   method="post" class="form-signin">
-			<h3 class="form-signin-heading" th:text="Welcome"></h3>
+			<h3 class="form-signin-heading" th:text="Авторизация"></h3>
 			<br/>
 			 
-			<input type="text" id="login" name="login"  th:placeholder="login"
+			<input type="text" id="login" name="login"  th:placeholder="Логин"
 				class="form-control" /> <br/> 
-			<input type="password"  th:placeholder="Password"
+			<input type="password"  th:placeholder="Пароль"
 				id="password" name="password" class="form-control" /> <br /> 
 				
 			<div align="center" th:if="${param.error}">

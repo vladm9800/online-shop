@@ -102,10 +102,9 @@ public class MainController {
         ordersService.addOrder(goods,date,time, place.getId(),user1.getUserId());
         cardService.save(cards,user1.getUserId());
 
-        List<Goods> phones = goodsService.getGoods();
-        model.addAttribute("phones", phones);
 
-        return "index";
+
+        return "accept";
     }
     @GetMapping(value = "/clear")
     public String getClear(HttpSession session, Model model) {

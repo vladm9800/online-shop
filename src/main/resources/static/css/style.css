@@ -1,8 +1,8 @@
-body {
-    /*background-color: #c7eeee;*/
-    /*border: 1px;*/
-    /*border-color: black;*/
-}
+/*body {*/
+    /*!*background-color: #c7eeee;*!*/
+    /*!*border: 1px;*!*/
+    /*!*border-color: black;*!*/
+/*}*/
 
 /*header {*/
     /*width: 100%;*/
@@ -637,7 +637,7 @@ th, td {
 }
 .sr {
     position: relative;
-    top: -20px;
+    top: 20px;
     /*left: 20px;*/
     text-align: center;
     font-size: 30px;
@@ -702,12 +702,12 @@ th, td {
 
 .footer6 {
     position: relative;
-    top: 1390px;
+    top: 1690px;
     width: 100%;
     height: 70px;
     background-color: #bee4ed;
     text-align: center;
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
     /*border-top: 3px solid #F5F5F5;*/

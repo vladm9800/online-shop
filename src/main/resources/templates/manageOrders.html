@@ -20,18 +20,18 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/admin}">Home
+                        <a class="nav-link" th:href="@{/admin}">Главная
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}">Catalog</a>
+                        <a class="nav-link" th:href="@{/}">Каталог</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#">О нас</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                        <a class="nav-link" th:href="@{/logout}">Выход</a>
                     </li>
                 </ul>
             </div>
@@ -52,6 +52,8 @@
         <th scope="col">Доставка</th>
         <th scope="col">id клиента</th>
         <th scope="col">id места достаки</th>
+        <th scope="col">Удаление</th>
+        <th scope="col">Изменение статуса</th>
 
     </tr>
     </thead>
@@ -60,19 +62,25 @@
         <tr >
             <th scope="row" th:text="${order.id}">1</th>
             <td  th:each="goods:${order.goods}" th:text="${goods.nameOfModel}">Mark</td>
-            <td th:text="${order.orderDate}">Mark</td>
-            <td th:text="${order.timeOfOrder}">@mdo</td>
-            <td th:text="${order.orderStatus}">@mdo</td>
-            <td th:text="${order.orderCost}">@mdo</td>
-            <td th:text="${order.payment}">@mdo</td>
-            <td th:text="${order.delivery}">@mdo</td>
-            <td th:text="${order.idClient}">@mdo</td>
-            <td th:text="${order.idDeliveryPlace}">@mdo</td>
+            <td th:text="${order.orderDate}"></td>
+            <td th:text="${order.timeOfOrder}"></td>
+            <td th:text="${order.orderStatus}"></td>
+            <td th:text="${order.orderCost}"></td>
+            <td th:text="${order.payment}"></td>
+            <td th:text="${order.delivery}"></td>
+            <td th:text="${order.idClient}"></td>
+            <td th:text="${order.idDeliveryPlace}"></td>
 
             <form action="#" th:action="@{/admin/manageOrders/delete}" th:field="${order}" method="post">
                 <td >
                     <input type="hidden" th:value="${order.id}" name="id" />
                     <input type="submit" value="Удалить" class="btn btn-outline-primary" />
+                </td>
+            </form>
+            <form action="#" th:action="@{/admin/manageOrders/changeStatus}" th:field="${order}" method="post">
+                <td >
+                    <input type="hidden" th:value="${order.id}" name="id" />
+                    <input type="submit" value="Доставлено" class="btn btn-outline-primary" />
                 </td>
             </form>
         </tr>

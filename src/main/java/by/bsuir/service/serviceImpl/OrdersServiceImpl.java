@@ -4,6 +4,7 @@ import by.bsuir.dao.OrderDao;
 import by.bsuir.model.Goods;
 import by.bsuir.model.Orders;
 import by.bsuir.service.OrdersService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,6 +46,16 @@ public class OrdersServiceImpl implements OrdersService {
 
         return (List<Orders>) orderDao.findAll();
     }
+
+    @Override
+    @Transactional
+    public void changeStatus(Orders orders) {
+        Orders orders1= orderDao.findById(orders.getId()).get();
+        orders1.setOrderStatus("Доставлено");
+        orderDao.save(orders1);
+    }
+
+
 
     @Autowired
     public void setOrderDao(OrderDao orderDao) {

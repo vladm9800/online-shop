@@ -4,10 +4,14 @@
         <meta charset="UTF-8">
         <title>Сравнение</title>
         <link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
         <link rel="stylesheet" th:href="@{/css/style.css}"  type="text/css">
+        <link th:href="@{css/logo-nav.css}" rel="stylesheet">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 
     </head>
-    <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
             <div class="container">
@@ -20,26 +24,27 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" th:href="@{/}">Home
+                            <a class="nav-link" th:href="@{/}">Главная
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#">О нас</a>
                         </li>
                         <li sec:authorize="isAuthenticated()"class="nav-item">
-                            <a class="nav-link" th:href="@{/logout}">Logout</a>
+                            <a class="nav-link" th:href="@{/logout}">Выход</a>
                         </li>
                         <li sec:authorize="!isAuthenticated()"class="nav-item">
-                            <a class="nav-link" th:href="@{/login}">LogIn</a>
+                            <a class="nav-link" th:href="@{/login}">Вход</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-        <p class="sr">Сравнение товаров</p>
+    <body>
+<div class="cocontainer">
+        <br><p class="sr">Сравнение товаров</p>
         <table class="t5">
             <th class="t8">
                 <a>
@@ -441,15 +446,16 @@
                 </th>
             </tr>
         </table>
-        <footer class="footer6">
-
-                <p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>
-                <p class="cop">Присоединяйтесь к нам в социальных сетях:</p>
-                <a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>
-                <a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>
-                <a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>
-                <a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>
-
-        </footer>
+</div>
     </body>
+    <!--<footer >-->
+    <!--<div class="footer6">-->
+        <!--<p class="help">© 2018 Онлайн-магазин Samsung, Минск</p>-->
+        <!--<p class="cop">Присоединяйтесь к нам в социальных сетях:</p>-->
+        <!--<a href="https://vk.com/samsung" ><img th:src="@{/images/vk.svg}"  class="vk"></a>-->
+        <!--<a href="https://twitter.com/samsungru" ><img th:src="@{/images/twitter.png}" class="twitter"></a>-->
+        <!--<a href="https://ru-ru.facebook.com/SamsungMobile/" ><img th:src="@{/images/facebook.png}"  class="facebook"></a>-->
+        <!--<a href="https://www.instagram.com/samsungru/" ><img  th:src="@{/images/instagram.png}"  class="instagram"></a>-->
+    <!--</div>-->
+    <!--</footer>-->
 </html>

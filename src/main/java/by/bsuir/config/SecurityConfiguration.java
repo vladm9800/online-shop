@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier(value = "configureDataSource")
@@ -47,8 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/","/select","/comparison","/phone","/clear").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
-                .antMatchers("/pay","/accept").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/registration","/accept").permitAll()
+                .antMatchers("/pay").hasAnyAuthority("USER","ADMIN")
                 .antMatchers("/admin").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated().and().csrf().disable().formLogin()

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:sec="thymeleaf-extras-springsecurity4"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Registration Form</title>
 	<link rel="icon" th:href="@{/images/favicon.ico}"  type="image/x-icon">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
-	<!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
 	<!-- Custom styles for this template -->
 	<link href="css/logo-nav.css" rel="stylesheet">
@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: #e3f2fd;">
 		<div class="container">
 			<a class="navbar-brand" >
-				<img th:src="@{images/samsung_logo.png}" width="150" height="30" alt="">
+				<img th:src="@{/images/samsung_logo.png}" width="150" height="30" alt="">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -26,18 +26,18 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home
+						<a class="nav-link" th:href="@{/}">Главная
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About</a>
+						<a class="nav-link" href="#">О нас</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Services</a>
+					<li sec:authorize="isAuthenticated()"class="nav-item">
+						<a class="nav-link" th:href="@{/logout}">Выход</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
+					<li sec:authorize="!isAuthenticated()"class="nav-item">
+						<a class="nav-link" th:href="@{/login}">Вход</a>
 					</li>
 				</ul>
 			</div>
@@ -46,16 +46,16 @@
 </header>
 <body>
 	<form th:action="@{/login}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Авторизация</button>
 	</form>	
 	
-	<div class="container">
-		<div class="row">
+	<div class="container ">
+		<div class="row align-items-center justify-content-center">
 			<div class="col-md-6 col-md-offset-3">
 				<form autocomplete="off" action="#" th:action="@{/registration}"
 					th:object="${user}" method="post" class="form-horizontal"
 					role="form">
-					<h2>Registration Form</h2>
+					<h2>Регистрация</h2>
 
 					<div class="form-group">
 						<div class="col-sm-9">
@@ -89,7 +89,7 @@
 						<label	th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
 								class="validation-message"></label>
 							<input type="password" th:field="*{surname}"
-								placeholder="Фамиоия" class="form-control" required/>
+								placeholder="Фамилия" class="form-control" required/>
 						</div>
 					</div>
 
@@ -112,7 +112,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-9">
-							<button type="submit" class="btn btn-primary btn-block">Register User</button>
+							<button type="submit" class="btn btn-primary btn-block">Регистрация</button>
 						</div>
 					</div>
 
@@ -125,10 +125,6 @@
 								class="validation-message"></label>
 						</div>
 					</div>
-
-
-					
-					
 				</form>
 			</div>
 		</div>
