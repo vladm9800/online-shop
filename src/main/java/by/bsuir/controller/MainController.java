@@ -60,23 +60,27 @@ public class MainController {
         return "index";
     }
     @GetMapping(value = "/comparison")
-    public String getComparison(HttpSession session,Select select,Model model){
+    public String getComparison(HttpSession session,Select select,Model model) {
         select = (Select) session.getAttribute("select");
-        if(select.getIdPhoneOne()==null||select.getIdPhoneTwo()==null){
+        if (select.getIdPhoneOne() == select.getIdPhoneTwo()) {
             List<Goods> phones = goodsService.getGoods();
             model.addAttribute("phones", phones);
             return "index";
-        }
-        else {
+        } else {
+            if (select.getIdPhoneOne() == null || select.getIdPhoneTwo() == null) {
+                List<Goods> phones = goodsService.getGoods();
+                model.addAttribute("phones", phones);
+                return "index";
+            } else {
 
-            Goods phoneOne = goodsService.getGoodsById(select.getIdPhoneOne());
-            Goods phoneTwo = goodsService.getGoodsById(select.getIdPhoneTwo());
-            model.addAttribute("phoneOne", phoneOne);
-            model.addAttribute("phoneTwo", phoneTwo);
-            return "comparison";
+                Goods phoneOne = goodsService.getGoodsById(select.getIdPhoneOne());
+                Goods phoneTwo = goodsService.getGoodsById(select.getIdPhoneTwo());
+                model.addAttribute("phoneOne", phoneOne);
+                model.addAttribute("phoneTwo", phoneTwo);
+                return "comparison";
+            }
         }
     }
-
 
 
     @PostMapping(value = "/phone")
