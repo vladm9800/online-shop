@@ -51,5 +51,8 @@ public class Role implements Serializable {
         return result;
     }
 
-
+    @Override
+    public String toString() {
+        return  role ;
+    }
 }
