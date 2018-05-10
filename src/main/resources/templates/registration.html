@@ -69,7 +69,7 @@
 					<div class="form-group">
 						<div class="col-sm-9">
 							<input type="password" th:field="*{password}"
-								   placeholder="Password" class="form-control" required /> <label
+								   placeholder="Пароль" class="form-control" required /> <label
 								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
 								class="validation-message"></label>
 						</div>
@@ -95,7 +95,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-9">
-							<input type="email" th:field="*{email}" placeholder="Email"
+							<input type="email" th:field="*{email}" placeholder="E-mail"
 								   class="form-control" required/> <label
 								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
 								class="validation-message"></label>
